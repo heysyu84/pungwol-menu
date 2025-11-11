@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PUNGWOL LOUNGE MENU</title>
+<style>
+  :root{ --bg:#0f0f19; --card:#181829; --text:#f3f4f6; --muted:#a1a1aa; --line:#2a2a3d; --gold:#ffd166; }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:radial-gradient(1200px 800px at 70% -10%, #372a68 0%, #0f0f19 60%); color:var(--text);}
+  .wrap{max-width:960px; margin:40px auto; padding:24px}
+  .title{font-size:44px; font-weight:900; letter-spacing:2px; text-align:center; margin:8px 0 8px; border-bottom:2px solid #4b4b63; padding-bottom:20px;}
+  .glow-purple{ text-shadow: 0 0 12px rgba(167,139,250,.9), 0 0 28px rgba(167,139,250,.5); }
+  .glow-white{ text-shadow: 0 0 8px rgba(255,255,255,.7), 0 0 18px rgba(255,255,255,.35); }
+  .section{margin:32px 0 18px; text-align:center; position:relative;}
+  .section .label{display:inline-block; padding:10px 24px; font-weight:900; letter-spacing:2px; font-size:24px; border-top:2px solid #4b4b63; border-bottom:2px solid #4b4b63; opacity:.95;}
+  .list{display:grid; grid-template-columns:1fr; gap:14px; margin-top:12px;}
+  .card{background:rgba(24,24,41,.66); border:1px solid var(--line); border-radius:16px; padding:16px 18px; backdrop-filter: blur(6px);}
+  .card.glow-purple{ box-shadow: 0 0 0 2px #7c3aed55, 0 0 30px 4px #7c3aed55; }
+  .row{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; margin-bottom:6px;}
+  .row.with-thumb{grid-template-columns:auto 1fr auto;}
+  .thumb{width:72px; height:72px; object-fit:cover; border-radius:10px; margin-right:14px; box-shadow:0 0 10px rgba(0,0,0,.35);}
+  .kr{font-size:18px; font-weight:700;}
+  .chips{margin-left:8px;}
+  .chip{display:inline-block; background:#2a2a3d; color:#c4b5fd; border:1px solid #4338ca33; padding:2px 8px; border-radius:999px; font-size:12px; margin-left:6px;}
+  .en{font-size:17px; color:var(--muted); font-style:italic; margin-top:2px;}
+  .price{font-size:16px; font-weight:800; color:var(--gold); padding-left:12px; text-align:right;}
+  .origin{font-size:12px; color:#cbd5e1; text-align:right; margin-top:-2px;}
+  .desc{margin-top:8px; font-size:13px; line-height:1.5; color:#d1d5db;}
+  @media (max-width:720px){ .title{font-size:36px;} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title glow-purple">PUNGWOL LOUNGE MENU</div>
+
+    <div class="section"><span class="label glow-white">— COCKTAIL —</span></div>
+    <div class="list">
+
+      <div class="card glow-purple">
+        <div class="row">
+          <div>
+            <div class="kr">풍월관</div>
+            <div class="en">Pungwolgwan Signature Cocktail</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(Korea)</div>
+          </div>
+        </div>
+        <div class="desc">상큼함과 달콤함이 균형을 이루는 하우스 시그니처입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">롱 아일랜드 아이스티</div>
+            <div class="en">Long Island Iced Tea</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">다섯 가지 스피릿의 조화가 선명하게 드러나는 클래식 레시피입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">블랙 러시안</div>
+            <div class="en">Black Russian</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(Belgium)</div>
+          </div>
+        </div>
+        <div class="desc">보드카와 커피 리큐르의 깊은 뉘앙스가 묵직한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">피치 크러쉬</div>
+            <div class="en">Peach Crush</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">복숭아의 달콤함이 산뜻한 여운으로 이어집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">피치 코코</div>
+            <div class="en">Peach CoCo Cocktail</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">복숭아와 코코넛의 조화가 부드럽게 어우러집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">블루 하와이</div>
+            <div class="en">Blue Hawaii Cocktail</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">청량감 있는 질감과 달콤한 과실 향이 특징입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">말리부 밀크</div>
+            <div class="en">Malibu Milk</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">코코넛의 달콤함이 우유의 부드러움과 만나 편안한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">데킬라 선라이즈</div>
+            <div class="en">Tequila Sunrise</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">상큼한 과실의 대비가 선명한 색감과 함께 즐거운 분위기를 더합니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">데킬라 슬래머</div>
+            <div class="en">Tequila Slammer</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">톡 쏘는 청량감으로 가볍게 즐기기 좋습니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">섹스 온 더 비치</div>
+            <div class="en">Sex On The Beach</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">복숭아와 감귤의 달콤함이 균형 있게 어우러집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">미도리 사워</div>
+            <div class="en">Midori Sour</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">멜론의 상큼함과 산뜻한 산미가 조화를 이룹니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">블루 사파이어</div>
+            <div class="en">Blue Sapphire</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(UK)</div>
+          </div>
+        </div>
+        <div class="desc">상쾌한 인상과 깔끔한 마무리가 특징입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">아디오스 마더 퍼커</div>
+            <div class="en">A.M.F (Adios Mother Fxxer)</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">달콤함과 청량감이 함께 느껴지는 강렬한 스타일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">준 벅</div>
+            <div class="en">June Bug Cocktail</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">멜론과 코코넛의 달콤함이 화사한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">파우스트</div>
+            <div class="en">Faust Cocktail</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">상큼한 과일 향이 돋보이는 균형 잡힌 칵테일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">깔루아 밀크</div>
+            <div class="en">Kahlua Milk</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">부드러운 질감 속에 달콤한 여운이 오래 남습니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">B-52</div>
+            <div class="en">B-52 Shot</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(Canada)</div>
+          </div>
+        </div>
+        <div class="desc">달콤하고 크리미한 풍미가 층층이 느껴집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">신데렐라 (논알콜)<span class="chips"><span class="chip">Non Alc</span></span></div>
+            <div class="en">Cinderella (Non Alc)</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">오렌지와 파인애플의 산뜻함이 조화를 이루는 논알콜 칵테일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">레이지 레몬 (논알콜)<span class="chips"><span class="chip">Non Alc</span></span></div>
+            <div class="en">Lazy Lemon (Non Alc)</div>
+          </div>
+          <div>
+            <div class="price">₩15,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">레몬의 상큼함과 청량감이 살아 있는 논알콜 음료입니다.</div>
+      </div>
+    </div>
+
+    <div class="section"><span class="label glow-white">— BEER —</span></div>
+    <div class="list">
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">버드 와이저</div>
+            <div class="en">Budweiser Lager Beer</div>
+          </div>
+          <div>
+            <div class="price">₩10,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc"></div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">코로나</div>
+            <div class="en">Corona Extra Beer</div>
+          </div>
+          <div>
+            <div class="price">₩10,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc"></div>
+      </div>
+    </div>
+
+    <div class="section"><span class="label glow-white">— ONE MIX & BOMB —</span></div>
+    <div class="list">
+
+      <div class="card glow-purple">
+        <div class="row">
+          <div>
+            <div class="kr">시나몬 밤 (파이어 볼)</div>
+            <div class="en">Cinnamon Bomb (Fireball)</div>
+          </div>
+          <div>
+            <div class="price">₩9,0</div>
+            <div class="origin">(Canada)</div>
+          </div>
+        </div>
+        <div class="desc">달콤한 향과 경쾌한 탄산감이 어우러지는 라이트한 샷입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">럼 콕</div>
+            <div class="en">Rum & Coke</div>
+          </div>
+          <div>
+            <div class="price">₩10,0</div>
+            <div class="origin">(Cuba)</div>
+          </div>
+        </div>
+        <div class="desc">묵직한 단맛과 탄산의 산뜻함이 균형을 이룹니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">밀키스 콕</div>
+            <div class="en">Milkis & Coke</div>
+          </div>
+          <div>
+            <div class="price">₩10,0</div>
+            <div class="origin">(Korea)</div>
+          </div>
+        </div>
+        <div class="desc">부드러운 탄산 조합으로 달콤한 음료형 칵테일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">보드카 오렌지</div>
+            <div class="en">Vodka Orange</div>
+          </div>
+          <div>
+            <div class="price">₩10,0</div>
+            <div class="origin">(International)</div>
+          </div>
+        </div>
+        <div class="desc">오렌지 주스와 보드카의 상큼한 조화가 특징인 베이직 믹스입니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row">
+          <div>
+            <div class="kr">시나몬 하이볼 (파이어 볼)</div>
+            <div class="en">Cinnamon Highball (Fireball)</div>
+          </div>
+          <div>
+            <div class="price">₩12,0</div>
+            <div class="origin">(Canada)</div>
+          </div>
+        </div>
+        <div class="desc">시나몬 향이 은은하게 퍼지는 달콤한 하이볼 스타일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">예거 밤</div>
+            <div class="en">Jäger Bomb</div>
+          </div>
+          <div>
+            <div class="price">₩12,0</div>
+            <div class="origin">(Germany)</div>
+          </div>
+        </div>
+        <div class="desc">예거마이스터와 에너지 드링크가 어우러진 강렬한 샷입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="kr">아그와 밤</div>
+            <div class="en">Agwa Bomb</div>
+          </div>
+          <div>
+            <div class="price">₩12,0</div>
+            <div class="origin">(Netherlands)</div>
+          </div>
+        </div>
+        <div class="desc">아그와 리큐르와 탄산이 결합된 독특한 허브 샷입니다.</div>
+      </div>
+    </div>
+
+    <div class="section"><span class="label glow-white">— HARD & LIQUEUR —</span></div>
+    <div class="list">
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/lemon_drop.png" alt="Lemon Drop" class="thumb">
+          <div>
+            <div class="kr">레몬 드롭 (바)<span class="chips"><span class="chip">Only Bar</span></span></div>
+            <div class="en">Lemon Drop (Only Bar)</div>
+          </div>
+          <div>
+            <div class="price">₩100,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">상큼한 레몬과 달콤한 설탕이 어우러진 시그니처 칵테일로, 깔끔한 마무리가 특징입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/montezuma.png" alt="Montezuma Tequila" class="thumb">
+          <div>
+            <div class="kr">몬테 주마 (바)<span class="chips"><span class="chip">Only Bar</span></span></div>
+            <div class="en">Montezuma Tequila (Only Bar)</div>
+          </div>
+          <div>
+            <div class="price">₩130,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">전통적인 멕시코 테킬라의 단정한 향과 부드러운 질감이 조화를 이룹니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row with-thumb">
+          <img src="images/taaka_vodka.png" alt="Taaka Vodka" class="thumb">
+          <div>
+            <div class="kr">타카 보드카 (플레인, 핑크, 그레이프)</div>
+            <div class="en">Taaka Vodka (Plain, Pink, Grape)</div>
+          </div>
+          <div>
+            <div class="price">₩180,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">깨끗하고 담백한 맛으로 다양한 칵테일에 잘 어울립니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/waikiki_rum.png" alt="Waikiki Rum Coconut" class="thumb">
+          <div>
+            <div class="kr">와이키키 (코코넛)</div>
+            <div class="en">Waikiki Rum Coconut</div>
+          </div>
+          <div>
+            <div class="price">₩180,0</div>
+            <div class="origin">(Portugal)</div>
+          </div>
+        </div>
+        <div class="desc">달콤한 코코넛 향과 부드러운 럼의 조화가 트로피컬한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row with-thumb">
+          <img src="images/fireball.png" alt="Fireball Cinnamon Whisky" class="thumb">
+          <div>
+            <div class="kr">파이어 볼 (시나몬)</div>
+            <div class="en">Fireball Cinnamon Whisky</div>
+          </div>
+          <div>
+            <div class="price">₩180,0</div>
+            <div class="origin">(Canada)</div>
+          </div>
+        </div>
+        <div class="desc">시나몬의 스파이시한 향이 은은하게 퍼지고, 부드러운 단맛으로 마무리됩니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/peachtree.png" alt="De Kuyper Peachtree" class="thumb">
+          <div>
+            <div class="kr">피치 트리</div>
+            <div class="en">De Kuyper Peachtree Schnapps</div>
+          </div>
+          <div>
+            <div class="price">₩210,0</div>
+            <div class="origin">(Netherlands)</div>
+          </div>
+        </div>
+        <div class="desc">잘 익은 복숭아 향이 은은하게 퍼지며 산뜻한 단맛이 맑게 이어집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/jose_cuervo.png" alt="Jose Cuervo Especial Gold" class="thumb">
+          <div>
+            <div class="kr">호세 쿠엘보</div>
+            <div class="en">Jose Cuervo Especial Gold Tequila</div>
+          </div>
+          <div>
+            <div class="price">₩210,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">부드러운 단맛과 은은한 오크 뉘앙스가 어우러져 균형 잡힌 마무리가 돋보입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/southern_comfort.png" alt="Southern Comfort" class="thumb">
+          <div>
+            <div class="kr">서던 컴포트</div>
+            <div class="en">Southern Comfort Original</div>
+          </div>
+          <div>
+            <div class="price">₩210,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">풍성한 과실 향과 향신료의 조화가 편안한 여운으로 이어집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/jagermeister.png" alt="Jägermeister" class="thumb">
+          <div>
+            <div class="kr">예거 마이스터</div>
+            <div class="en">Jägermeister Herbal Liqueur</div>
+          </div>
+          <div>
+            <div class="price">₩210,0</div>
+            <div class="origin">(Germany)</div>
+          </div>
+        </div>
+        <div class="desc">다채로운 허브와 향신료의 복합미가 조화롭게 어우러집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/bombay_sapphire.png" alt="Bombay Sapphire" class="thumb">
+          <div>
+            <div class="kr">봄베이 사파이어</div>
+            <div class="en">Bombay Sapphire Gin</div>
+          </div>
+          <div>
+            <div class="price">₩210,0</div>
+            <div class="origin">(United Kingdom)</div>
+          </div>
+        </div>
+        <div class="desc">선명한 보태니컬 아로마와 산뜻한 질감이 조화를 이룹니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row with-thumb">
+          <img src="images/wheatley_vodka.png" alt="Wheatley Vodka" class="thumb">
+          <div>
+            <div class="kr">휘틀리 보드카</div>
+            <div class="en">Wheatley Vodka</div>
+          </div>
+          <div>
+            <div class="price">₩230,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">밀의 부드러움이 살아 있는 정제된 질감으로, 맑고 깨끗한 피니시가 특징입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/agwa.png" alt="Agwa de Bolivia" class="thumb">
+          <div>
+            <div class="kr">아그와</div>
+            <div class="en">Agwa de Bolivia Coca Leaf Liqueur</div>
+          </div>
+          <div>
+            <div class="price">₩230,0</div>
+            <div class="origin">(Netherlands)</div>
+          </div>
+        </div>
+        <div class="desc">코카잎과 허브가 어우러진 이국적인 향이 균형 있게 펼쳐집니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row with-thumb">
+          <img src="images/x_rated.png" alt="X-Rated Fusion" class="thumb">
+          <div>
+            <div class="kr">엑스 레이티드</div>
+            <div class="en">X-Rated Fusion</div>
+          </div>
+          <div>
+            <div class="price">₩230,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">열대 과실의 풍성한 향과 부드러운 질감이 어우러져 화사한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/grey_goose.png" alt="Grey Goose Vodka" class="thumb">
+          <div>
+            <div class="kr">그레이 구스</div>
+            <div class="en">Grey Goose Vodka</div>
+          </div>
+          <div>
+            <div class="price">₩250,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">섬세한 질감과 은은한 곡물 향이 세련된 마무리로 이어집니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/patron_silver.png" alt="Patrón Silver" class="thumb">
+          <div>
+            <div class="kr">패트론 실버</div>
+            <div class="en">Patrón Silver Tequila</div>
+          </div>
+          <div>
+            <div class="price">₩400,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">순도 높은 아가베의 맑은 향과 상쾌한 과실 뉘앙스가 청아한 질감과 어우러집니다. 투명한 결로 떨어지는 피니시가 자리의 품격을 한층 끌어올립니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/clase_azul.png" alt="Clase Azul Reposado" class="thumb">
+          <div>
+            <div class="kr">클라세 아줄 레포사도</div>
+            <div class="en">Clase Azul Tequila Reposado</div>
+          </div>
+          <div>
+            <div class="price">₩900,0</div>
+            <div class="origin">(Mexico)</div>
+          </div>
+        </div>
+        <div class="desc">오크 숙성에서 비롯된 바닐라와 캐러멜의 깊이가 우아하게 펼쳐집니다. 부드럽고 넉넉한 질감과 긴 여운이 특별한 순간을 세련되게 완성합니다.</div>
+      </div>
+    </div>
+
+    <div class="section"><span class="label glow-white">— WHISKY —</span></div>
+    <div class="list">
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/benchmark.png" alt="Benchmark Bourbon" class="thumb">
+          <div>
+            <div class="kr">벤치 마크 (잭 다니엘)</div>
+            <div class="en">Benchmark Bourbon Whiskey (Jack Daniel’s)</div>
+          </div>
+          <div>
+            <div class="price">₩180,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">부드럽고 균형 잡힌 향이 조화롭게 어우러지는 깔끔한 스타일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/buffalo_trace.png" alt="Buffalo Trace" class="thumb">
+          <div>
+            <div class="kr">버팔로 트레이스</div>
+            <div class="en">Buffalo Trace Kentucky Straight Bourbon Whiskey</div>
+          </div>
+          <div>
+            <div class="price">₩230,0</div>
+            <div class="origin">(USA)</div>
+          </div>
+        </div>
+        <div class="desc">오크와 바닐라의 조화가 선명하게 드러나며, 탄탄한 구조감으로 마무리됩니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/hennessy_vsop.png" alt="Hennessy VSOP" class="thumb">
+          <div>
+            <div class="kr">헤네시 V.S.O.P</div>
+            <div class="en">Hennessy V.S.O.P</div>
+          </div>
+          <div>
+            <div class="price">₩390,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">잘 익은 과실과 오크의 조화가 섬세하게 겹쳐집니다. 매끄럽게 이어지는 질감과 균형 잡힌 여운이 한층 우아한 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/johnnie_blue.png" alt="Johnnie Walker Blue Label" class="thumb">
+          <div>
+            <div class="kr">조니 워커 블루</div>
+            <div class="en">Johnnie Walker Blue Label Scotch Whisky</div>
+          </div>
+          <div>
+            <div class="price">₩900,0</div>
+            <div class="origin">(Scotland, UK)</div>
+          </div>
+        </div>
+        <div class="desc">엄선된 원액을 정교하게 블렌딩해 실키한 질감과 은은한 스모키가 겹겹이 펼쳐집니다. 깊고 고요한 마무리가 특별한 순간을 세련되게 완성합니다.</div>
+      </div>
+    </div>
+
+    <div class="section"><span class="label glow-white">— CHAMPAGNE —</span></div>
+    <div class="list">
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/365_brut.png" alt="365 Brut" class="thumb">
+          <div>
+            <div class="kr">365 (바)<span class="chips"><span class="chip">Only Bar</span></span></div>
+            <div class="en">365 Brut (Only Bar)</div>
+          </div>
+          <div>
+            <div class="price">₩79,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">상큼한 과일 향과 부드러운 버블이 어우러진 가벼운 스타일입니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/pierlant_demisec.png" alt="Pierlant Demi-Sec" class="thumb">
+          <div>
+            <div class="kr">피어랑 데미 섹</div>
+            <div class="en">Pierlant Demi-Sec</div>
+          </div>
+          <div>
+            <div class="price">₩129,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">은은한 단맛과 부드러운 질감이 조화되어 편안하게 즐기기 좋습니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/pierlant_rose.png" alt="Pierlant Demi-Sec Rosé" class="thumb">
+          <div>
+            <div class="kr">피어랑 데미 섹 로제</div>
+            <div class="en">Pierlant Demi-Sec Rosé</div>
+          </div>
+          <div>
+            <div class="price">₩129,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">산뜻한 과실 향과 고운 빛깔이 밝은 인상을 남깁니다.</div>
+      </div>
+
+      <div class="card glow-purple">
+        <div class="row with-thumb">
+          <img src="images/richebel_rose.png" alt="Richebel Brut Rosé" class="thumb">
+          <div>
+            <div class="kr">리쉬벨 로제</div>
+            <div class="en">Richebel Brut Rosé</div>
+          </div>
+          <div>
+            <div class="price">₩230,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">잘 익은 베리의 향과 고운 버블이 어우러져 우아한 여운을 남깁니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/moet_imperial.png" alt="Moët & Chandon Impérial Brut" class="thumb">
+          <div>
+            <div class="kr">모엣 & 샹동</div>
+            <div class="en">Moët & Chandon Impérial Brut</div>
+          </div>
+          <div>
+            <div class="price">₩250,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">섬세한 기포와 균형 잡힌 풍미가 조화를 이루어 기념의 순간을 품격 있게 완성합니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/moet_nir.png" alt="Moët & Chandon N.I.R" class="thumb">
+          <div>
+            <div class="kr">모엣 & 샹동 니르</div>
+            <div class="en">Moët & Chandon N.I.R</div>
+          </div>
+          <div>
+            <div class="price">₩280,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">나이트 라이트업 라벨로 연출되는 한정 에디션으로, 잘 익은 레드 프루트와 열대 과실의 풍성함이 부드러운 단맛과 어우러집니다. 화사한 무드가 축제의 순간을 돋보이게 합니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/dom_perignon.png" alt="Dom Pérignon Luminous Edition" class="thumb">
+          <div>
+            <div class="kr">돔 페리뇽 루미너스</div>
+            <div class="en">Dom Pérignon Luminous Edition</div>
+          </div>
+          <div>
+            <div class="price">₩1,200,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">시간의 숙성과 정교함이 만들어낸 복합적인 향과 섬세한 버블이 다층적으로 전개됩니다. 우아한 긴 여운이 특별한 순간을 기품 있게 완성합니다.</div>
+      </div>
+
+      <div class="card">
+        <div class="row with-thumb">
+          <img src="images/armand_brignac.png" alt="Armand de Brignac Brut Gold" class="thumb">
+          <div>
+            <div class="kr">아르망 드 브리냑</div>
+            <div class="en">Armand de Brignac Brut Gold Champagne</div>
+          </div>
+          <div>
+            <div class="price">₩2,500,0</div>
+            <div class="origin">(France)</div>
+          </div>
+        </div>
+        <div class="desc">잘 익은 과실과 브리오슈 뉘앙스가 어우러지며 크리미한 질감이 풍성하게 퍼집니다. 존재감 있는 마무리가 하이라이트를 장식합니다.</div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
