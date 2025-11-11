@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>PUNGWOL – TOP</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body><noscript>JavaScript가 꺼져 있어 페이지 전환 시 주소가 보일 수 있습니다.</noscript>
+<nav class="nav" id="nav">
+<a class="active" href="index.html">TOP</a>
+<a href="cocktails-beer.html">COCKTAIL &amp; BEER</a>
+<a href="one-mix-bomb.html">ONE MIX &amp; BOMB</a>
+<a href="shots.html">SHOT</a>
+<a href="beverage.html">BEVERAGE</a>
+<a href="hard-liqueur.html">HARD &amp; LIQUEUR</a>
+<a href="whisky-champagne.html">WHISKY &amp; CHAMPAGNE</a>
+<a href="set-menu.html">SET MENU</a>
+</nav>
+<main class="page-pad">
+<div class="wrap" id="app">
+<section class="top-hero">
+<div>
+<div class="title">PUNGWOL LOUNGE MENU</div><img alt="Pungwol Lounge Logo" src="images/logo.png"/>
+<div class="top-title">Welcome to PUNGWOL LOUNGE</div>
+</div>
+</section>
+</div>
+</main>
+<script data-spa="pungwol">
+(function () {
+  const app = document.getElementById('app');
+  const nav = document.getElementById('nav');
+  if (!app || !nav) return;
+
+  // Visual fade helper
+  function fade(to, done) {
+    app.style.transition = 'opacity .18s ease';
+    app.style.opacity = to;
+    setTimeout(() => { if (done) done(); }, 180);
+  }
+
+  async function loadPage(url, linkEl) {
+    try {
+      fade('0.35');
+      const res = await fetch(url, {cache: 'no-cache'});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const dom = new DOMParser().parseFromString(text, 'text/html');
+      const nextWrap = dom.querySelector('main .wrap');
+      const nextTitle = dom.querySelector('title');
+      if (nextWrap) app.innerHTML = nextWrap.innerHTML;
+      if (nextTitle) document.title = nextTitle.textContent;
+
+      // Active state
+      nav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+      if (linkEl) linkEl.classList.add('active');
+    } finally {
+      fade('1');
+    }
+  }
+
+  // Intercept nav clicks
+  nav.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const url = a.getAttribute('href');
+    if (!url || !url.endsWith('.html')) return;
+    e.preventDefault();
+    // No history.pushState => URL stays the same
+    loadPage(url, a).catch(() => { window.location.href = url; });
+  });
+
+  // Prefetch on hover
+  nav.querySelectorAll('a[href$=".html"]').forEach(a => {
+    a.addEventListener('mouseenter', () => { fetch(a.href, {cache: 'force-cache'}).catch(()=>{}); });
+  });
+})();
+</script></body>
+</html>
