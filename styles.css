@@ -86,7 +86,7 @@
 .row .thumb{
   height:80px !important;
   width:auto !important;
-  max-width:100%;
+  max-width:50%;
   object-fit:contain;
 }
 
