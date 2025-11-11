@@ -55,13 +55,13 @@
 /* ===== Fixed nav (top; on mobile bottom) ===== */
 .nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;position:fixed;left:0;right:0;top:0;z-index:1000;display:flex;gap:10px;justify-content:center;align-items:center;
   background:rgba(24,24,41,.85);backdrop-filter:blur(8px);border-bottom:1px solid #27273a;padding:10px 12px;}
-.nav a{text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.5px;color:#e5e7eb;padding:8px 12px;border-radius:999px;
+.nav a{text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.5px;color:#e5e7eb;padding:4px 6px;border-radius:999px;
   border:1px solid #3b3b55;background:#1a1a2b}
 .nav a:hover{box-shadow:0 0 0 2px #7c3aed55,0 0 22px 2px #7c3aed55}
 .nav a.active{color:#111;background:var(--gold);border-color:#b68c34}
 @media (max-width:720px){.nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;top:auto;bottom:0;border-top:1px solid #27273a;border-bottom:none}}
-.page-pad{ padding:20px 12px 100px }
-@media (max-width:720px){ .page-pad{ padding:8px 8px 120px } }
+.page-pad{ padding:4px 8px 80px }
+@media (max-width:720px){ .page-pad{ padding:2px 4px 100px } }
 
 /* ===== Top hero (logo) ===== */
 .top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:center}
@@ -69,7 +69,7 @@
 .top-title{margin-top:20px;font-weight:800;letter-spacing:1px;opacity:.9}
 
 /* ===== Image thumb slot (always reserved) ===== */
-.thumb-wrap{flex:0 0 auto;height:80px;border-radius:10px;overflow:hidden;background:#1c1c2c;display:flex;
+.thumb-wrap{flex:0 0 auto;height:60px;border-radius:10px;overflow:hidden;background:#1c1c2c;display:flex;
   align-items:center;justify-content:center;margin-right:6px;border:1px solid rgba(67,56,202,.25)}
 .thumb-wrap.empty::before{content:"";display:block;width:40px;height:40px;border:2px dashed rgba(200,200,220,.35);
   border-radius:8px;opacity:.6}
@@ -84,7 +84,7 @@
 
 /* Image sizing update */
 .row .thumb{
-  height:80px !important;
+  height:60px !important;
   width:auto !important;
   max-width:100%;
   object-fit:contain;
@@ -97,7 +97,7 @@
 .nav a{
   flex:1 1 22%;
   text-align:center;
-  padding:6px 8px;
+  padding:4px 6px;
   margin:4px;
 }
 @media (max-width:720px){
