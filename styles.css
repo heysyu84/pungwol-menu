@@ -25,7 +25,7 @@
 
 
 /* === Set menu: shrink +0 / +3만 / +5만 boxes & font (one step smaller) === */
-
+.set-price-box {
   width: 52px;         /* was ~60px */
   min-width: 48px;
   text-align: center;
@@ -37,15 +37,21 @@
   border: 1px solid #4338ca33;
   color: #c4b5fd;
   display: inline-block;
+}
+.set-price-box span {
   display: inline-block;
   transform: translateY(1px);
+}
 /* keep names on one line but also slightly smaller */
-
+.set-name {
   white-space: nowrap;
   line-height: 1;
   letter-spacing: -0.02em;
   font-size: clamp(9px, 1.6vw, 11px);
   margin-left: 4px;
+}
+
+
 /* ===== Fixed nav (top; on mobile bottom) ===== */
 .nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;position:fixed;left:0;right:0;top:0;z-index:1000;display:flex;gap:10px;justify-content:center;align-items:center;
   background:rgba(24,24,41,.85);backdrop-filter:blur(8px);border-bottom:1px solid #27273a;padding:10px 12px;}
@@ -72,6 +78,9 @@
 
 
 /* --- Original SET MENU styles (restored) --- */
+.set-price-box {
+.set-price-box span {
+.set-name {
 
 /* Image sizing update */
 .row .thumb{
@@ -79,44 +88,18 @@
   width:auto !important;
   max-width:100%;
   object-fit:contain;
+}
+
 @media (max-width:720px){
   .nav a{ flex:1 1 45%; text-align:center; }
+}
+
 .nav a{
   flex:1 1 22%;
   text-align:center;
   padding:6px 8px;
   margin:4px;
+}
 @media (max-width:720px){
   .nav a{ flex:1 1 22%; max-width:25%; }
-
-
-/* === PATCH: safe image sizing & wrapper (prevents horizontal stretching) === */
-#whisky img,
-#champagne img,
-.whisky-champagne .card img,
-.row .thumb,
-.card img {
-  max-height: 80px;
-  height: auto !important;
-  width: auto !important;
-  max-width: 100%;
-  object-fit: contain !important;
-  display: block;
 }
-
-/* Ensure wrappers don't force images to stretch */
-.thumb-wrap{
-  flex: 0 0 auto !important;
-  width: auto !important;
-  height: auto !important;
-}
-
-/* If a fixed thumb-wrap height exists elsewhere, make the image fit inside without stretching */
-.thumb-wrap img,
-.row .thumb{
-  max-height: 100% !important;
-  height: auto !important;
-  width: auto !important;
-  object-fit: contain !important;
-}
-
