@@ -69,7 +69,7 @@
 .top-title{margin-top:20px;font-weight:800;letter-spacing:1px;opacity:.9}
 
 /* ===== Image thumb slot (always reserved) ===== */
-.thumb-wrap{flex:0 0 auto;height:80px;border-radius:10px;;display:flex;
+.thumb-wrap{flex:0 0 auto;height:80px;border-radius:10px;overflow:hidden;background:#1c1c2c;display:flex;
   align-items:center;justify-content:center;margin-right:6px;border:1px solid rgba(67,56,202,.25)}
 .thumb-wrap.empty::before{content:"";display:block;width:40px;height:40px;border:2px dashed rgba(200,200,220,.35);
   border-radius:8px;opacity:.6}
@@ -103,3 +103,44 @@
 @media (max-width:720px){
   .nav a{ flex:1 1 22%; max-width:25%; }
 }
+
+
+/* ===== FIX: Bottom nav (하단 메뉴) robust layout ===== */
+.nav{
+  position: fixed !important;
+  left: 0; right: 0; bottom: 0;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+  padding: 6px 6px;
+  background: #121223f2;            /* unified backdrop */
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,.08);
+  z-index: 9999 !important;
+  box-sizing: border-box;
+}
+.nav a{
+  display: block;
+  flex: 1 1 25% !important;          /* 4 per row */
+  max-width: 25% !important;         /* force 4 columns */
+  text-align: center;
+  padding: 10px 6px;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Ensure there's room for the fixed nav so content isn't hidden */
+.page-pad{ padding-bottom: 140px !important; }
+@media (max-width: 720px){
+  .page-pad{ padding-bottom: 160px !important; }
+}
+
+/* Optional: make active tab visible */
+.nav a.active{ font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
