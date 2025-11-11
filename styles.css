@@ -82,13 +82,6 @@
 .set-price-box span {
 .set-name {
 
-/* Image sizing update */
-.row .thumb{
-  height:80px;
-  width:auto;
-  max-width:100%;
-  object-fit:contain;
-}
 
 @media (max-width:720px){
   .nav a{ flex:1 1 45%; text-align:center; }
