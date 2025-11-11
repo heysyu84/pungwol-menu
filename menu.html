@@ -28,6 +28,37 @@
   @media (max-width:720px){ .title{font-size:36px;} }
 
   .thumb{width:40px; height:auto; object-fit:cover; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,.35);}
+
+/* === 세트메뉴 추가금액 박스 크기 및 글씨 설정 === */
+.set-price-box {
+  width: 60px;          /* 박스 가로 폭 */
+  min-width: 55px;      /* 최소 폭 */
+  text-align: center;
+  padding: 2px 4px;     /* 내부 여백 */
+  font-size: 12px;      /* 글자 크기 조정 */
+  font-weight: 700;
+  background: #2a2a3d;
+  border-radius: 8px;
+  border: 1px solid #4338ca33;
+  color: #c4b5fd;       /* 보라색 계열 폰트 */
+  display: inline-block;
+}
+.set-price-box span {
+  display: inline-block;
+  transform: translateY(1px); /* 살짝 중앙 정렬용 */
+}
+.set-name {
+  white-space: nowrap;         /* 줄바꿈 방지 */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-size: clamp(10px, 1.8vw, 12px);
+  margin-left: 4px;
+}
+@media (max-width: 360px){
+  .set-price-box { width: 52px; font-size: 11px; }
+  .set-name { font-size: clamp(9px, 2.2vw, 11px); }
+}
+
 </style>
 </head>
 <body>
