@@ -2,7 +2,7 @@
   :root{ --bg:#0f0f19; --card:#181829; --text:#f3f4f6; --muted:#a1a1aa; --line:#2a2a3d; --gold:#ffd166; }
   *{box-sizing:border-box}
   body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:radial-gradient(1200px 800px at 70% -10%, #372a68 0%, #0f0f19 60%); color:var(--text);}
-  .wrap{max-width:960px; margin:40px auto; padding:24px}
+  .wrap{max-width:960px; margin:8px auto; padding:24px}
   .title{font-size:44px; font-weight:900; letter-spacing:2px; text-align:center; margin:8px 0 8px; border-bottom:2px solid #4b4b63; padding-bottom:20px; text-shadow:0 0 12px rgba(167,139,250,.9);}
   .section{margin:32px 0 18px; text-align:center; position:relative;}
   .section .label{display:inline-block; padding:14px 28px; font-weight:900; letter-spacing:2px; font-size:44px; border-top:2px solid #4b4b63; border-bottom:2px solid #4b4b63; opacity:.95; text-shadow:0 0 8px rgba(255,255,255,.6);}
@@ -287,3 +287,64 @@
 /* TOP page only */
 .is-top .page-pad{ padding-top:10px !important; }
 .top-hero > div{ display:flex; flex-direction:column; align-items:center; }
+
+
+/* TOP page minor spacing + centering */
+.is-top .wrap{ margin-top:18px !important; }
+.is-top .top-hero{ display:grid; place-items:center; text-align:center; }
+.is-top .top-hero > div{ display:flex; flex-direction:column; align-items:center; }
+
+
+
+/* SET MENU mobile overflow fixes */
+@media (max-width: 720px){
+  #set-menu{ overflow:hidden; padding:0 8px; margin:8px auto !important; }
+  #set-menu .swap-row{ display:grid; grid-template-columns:1fr !important; gap:10px; }
+  #set-menu .pill{ align-self:flex-start; }
+  #set-menu .groupbox{ flex-wrap:wrap !important; gap:8px; }
+  #set-menu .card, #set-menu .panel{ max-width:100% !important; width:100% !important; }
+  #set-menu .row{ flex-wrap:wrap; }
+}
+
+
+
+/* ===== SET MENU page-scoped layout fixes ===== */
+.is-setmenu .section.section--top{ margin: 10px 0 8px !important; }     /* top header spacing tighter */
+.is-setmenu #set-menu .card:first-of-type{ margin-top: 8px !important; } /* A세트 위 여백 축소 */
+
+/* Center pill overlapped at top border */
+.is-setmenu #set-menu .panel{ position: relative; overflow: visible; padding-top: 42px; }
+.is-setmenu #set-menu .swap-row{ position: relative; display:block; }
+.is-setmenu #set-menu .pill{
+  position: absolute !important;
+  left: 50% !important;
+  top: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  z-index: 5;
+}
+
+/* Images in one row across full width */
+.is-setmenu #set-menu .groupbox{
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  gap: 16px !important;
+  width: 100%;
+}
+.is-setmenu #set-menu .groupbox .item{ flex: 0 1 auto; text-align: center; }
+.is-setmenu #set-menu .groupbox .item img{
+  max-height: 80px; height: auto; width: auto; max-width: 100%; object-fit: contain;
+}
+
+/* Mobile: keep same overlapped pill, but let items wrap if too many */
+@media (max-width: 720px){
+  .is-setmenu #set-menu .panel{ padding-top: 38px; }
+  .is-setmenu #set-menu .groupbox{ flex-wrap: wrap !important; justify-content: center !important; gap: 12px; }
+  .is-setmenu #set-menu .groupbox .item img{ max-height: 70px; }
+}
+
+/* Prevent any outer spill */
+.is-setmenu #set-menu, .is-setmenu #set-menu *{ box-sizing: border-box; max-width:100%; }
+
