@@ -2,7 +2,7 @@
   :root{ --bg:#0f0f19; --card:#181829; --text:#f3f4f6; --muted:#a1a1aa; --line:#2a2a3d; --gold:#ffd166; }
   *{box-sizing:border-box}
   body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:radial-gradient(1200px 800px at 70% -10%, #372a68 0%, #0f0f19 60%); color:var(--text);}
-  .wrap{max-width:960px; margin:8px auto; padding:24px}
+  .wrap{max-width:960px; margin:40px auto; padding:24px}
   .title{font-size:44px; font-weight:900; letter-spacing:2px; text-align:center; margin:8px 0 8px; border-bottom:2px solid #4b4b63; padding-bottom:20px; text-shadow:0 0 12px rgba(167,139,250,.9);}
   .section{margin:32px 0 18px; text-align:center; position:relative;}
   .section .label{display:inline-block; padding:14px 28px; font-weight:900; letter-spacing:2px; font-size:44px; border-top:2px solid #4b4b63; border-bottom:2px solid #4b4b63; opacity:.95; text-shadow:0 0 8px rgba(255,255,255,.6);}
@@ -55,48 +55,26 @@
 /* ===== Fixed nav (top; on mobile bottom) ===== */
 .nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;position:fixed;left:0;right:0;top:0;z-index:1000;display:flex;gap:10px;justify-content:center;align-items:center;
   background:rgba(24,24,41,.85);backdrop-filter:blur(8px);border-bottom:1px solid #27273a;padding:10px 12px;}
-.nav a{text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.5px;color:#e5e7eb;padding:4px 6px;border-radius:999px;
+.nav a{text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.5px;color:#e5e7eb;padding:8px 12px;border-radius:999px;
   border:1px solid #3b3b55;background:#1a1a2b}
 .nav a:hover{box-shadow:0 0 0 2px #7c3aed55,0 0 22px 2px #7c3aed55}
 .nav a.active{color:#111;background:var(--gold);border-color:#b68c34}
 @media (max-width:720px){.nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;top:auto;bottom:0;border-top:1px solid #27273a;border-bottom:none}}
-.page-pad{ padding:0 6px 70px }
-@media (max-width:720px){ .page-pad{ padding:0 4px 90px } }
+.page-pad{ padding:20px 12px 100px }
+@media (max-width:720px){ .page-pad{ padding:8px 8px 120px } }
 
 /* ===== Top hero (logo) ===== */
-.top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:centermargin-top:10px; }
+.top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:center}
 .top-hero img{width:min(380px,70vw);height:auto;filter:drop-shadow(0 10px 40px rgba(124,58,237,.35))}
 .top-title{margin-top:20px;font-weight:800;letter-spacing:1px;opacity:.9}
 
 /* ===== Image thumb slot (always reserved) ===== */
-.thumb-wrap{
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  height: auto;
-  flex: 0 0 auto;
-  margin-right: 8px;
-}
+.thumb-wrap{flex:0 0 auto;height:80px;border-radius:10px;overflow:hidden;background:#1c1c2c;display:flex;
+  align-items:center;justify-content:center;margin-right:6px;border:1px solid rgba(67,56,202,.25)}
 .thumb-wrap.empty::before{content:"";display:block;width:40px;height:40px;border:2px dashed rgba(200,200,220,.35);
   border-radius:8px;opacity:.6}
-.row .thumb, .thumb-wrap img, .menu-image img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-.row .thumb, .thumb-wrap img, .menu-image img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
+.row .thumb{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform .25s ease, filter .25s ease}
+.row .thumb:hover{transform:scale(1.05);filter:brightness(1.06)}
 
 
 /* --- Original SET MENU styles (restored) --- */
@@ -105,14 +83,11 @@
 .set-name {
 
 /* Image sizing update */
-.row .thumb, .thumb-wrap img, .menu-image img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
+.row .thumb{
+  height:80px !important;
+  width:auto !important;
+  max-width:100%;
+  object-fit:contain;
 }
 
 @media (max-width:720px){
@@ -122,229 +97,9 @@
 .nav a{
   flex:1 1 22%;
   text-align:center;
-  padding:4px 6px;
+  padding:6px 8px;
   margin:4px;
 }
 @media (max-width:720px){
   .nav a{ flex:1 1 22%; max-width:25%; }
 }
-
-
-/* ===== Mobile layout: prevent giant image holders & keep images crisp ===== */
-@media (max-width: 720px){
-  /* Never stretch bottle images inside cards on mobile */
-  .card img{
-    max-height: 60px !important;
-    height: auto !important;
-    width: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-  }
-  /* Any image containers should not impose big fixed heights */
-  .thumb-wrap,
-  .menu-image,
-  .image,
-  .photo,
-  .bottle,
-  .product-image{
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    flex: 0 0 auto !important;
-  }
-  /* Align content tighter */
-  .card .row{ align-items: center !important; }
-}
-
-
-.row .thumb, .thumb-wrap img, .menu-image img{
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-
-/* ===== SET MENU mobile containment & wrapping ===== */
-@media (max-width: 720px){
-  /* Make sure the whole section clips internal overflow */
-  #set-menu{ overflow: hidden; }
-
-  /* Common containers inside SET MENU should never overflow horizontally */
-  #set-menu .card,
-  #set-menu .panel,
-  #set-menu .box,
-  #set-menu .set-box,
-  #set-menu .set-panel,
-  #set-menu .set-group,
-  #set-menu .set-row,
-  #set-menu .set-list,
-  #set-menu .group,
-  #set-menu .wrap,
-  #set-menu .inner{
-    max-width: 100% !important;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-
-  /* Any flex rows should wrap to next line instead of pushing container width */
-  #set-menu .row,
-  #set-menu .set-row,
-  #set-menu .flex{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  /* Generic columns inside set rows become full width on mobile */
-  #set-menu .col,
-  #set-menu .left,
-  #set-menu .right,
-  #set-menu .content,
-  #set-menu .items{
-    flex: 1 1 100%;
-    min-width: 0;
-  }
-
-  /* Image strips inside boxes should scale down to container */
-  #set-menu img{
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Pills on the left (+0 / +30,000 / +50,000) should not overlap content */
-  #set-menu .pill,
-  #set-menu .set-price-box{
-    position: relative;
-    left: 0;
-    transform: none;
-    margin: 6px 0;
-  }
-}
-
-
-
-/* ===== SET MENU: strong containment to stop inner boxes spilling out ===== */
-#set-menu{ overflow:hidden !important; }
-.wrap{ overflow-x:hidden; }
-
-#set-menu *{
-  box-sizing:border-box;
-  max-width:100%;
-  min-width:0;
-  min-height:0 !important;
-}
-
-/* turn any absolute/translated badges into normal flow on mobile */
-@media (max-width: 720px){
-  #set-menu .pill,
-  #set-menu .set-price-box,
-  #set-menu [class*="price-box"],
-  #set-menu [class*="pill"]{
-    position:static !important;
-    transform:none !important;
-    left:auto !important; right:auto !important; top:auto !important;
-    margin:8px 0 !important;
-    display:inline-flex;
-  }
-}
-
-/* ensure rows wrap instead of forcing width */
-#set-menu .row, 
-#set-menu .set-row, 
-#set-menu .flex{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-/* columns become full width on small screens */
-@media (max-width: 720px){
-  #set-menu .col, 
-  #set-menu .left, 
-  #set-menu .right, 
-  #set-menu .content, 
-  #set-menu .items, 
-  #set-menu .inner, 
-  #set-menu .set-group, 
-  #set-menu .set-box, 
-  #set-menu .panel{
-    flex:1 1 100% !important;
-    width:100% !important;
-  }
-}
-
-/* images never overflow */
-#set-menu img{
-  max-width:100% !important;
-  height:auto !important;
-}
-
-/* prevent horizontal scroll caused by long words (fallback) */
-#set-menu{ word-break:keep-all; overflow-wrap:break-word; }
-
-
-/* TOP page only */
-.is-top .page-pad{ padding-top:10px !important; }
-.top-hero > div{ display:flex; flex-direction:column; align-items:center; }
-
-
-/* TOP page minor spacing + centering */
-.is-top .wrap{ margin-top:18px !important; }
-.is-top .top-hero{ display:grid; place-items:center; text-align:center; }
-.is-top .top-hero > div{ display:flex; flex-direction:column; align-items:center; }
-
-
-
-/* SET MENU mobile overflow fixes */
-@media (max-width: 720px){
-  #set-menu{ overflow:hidden; padding:0 8px; margin:8px auto !important; }
-  #set-menu .swap-row{ display:grid; grid-template-columns:1fr !important; gap:10px; }
-  #set-menu .pill{ align-self:flex-start; }
-  #set-menu .groupbox{ flex-wrap:wrap !important; gap:8px; }
-  #set-menu .card, #set-menu .panel{ max-width:100% !important; width:100% !important; }
-  #set-menu .row{ flex-wrap:wrap; }
-}
-
-
-
-/* ===== SET MENU page-scoped layout fixes ===== */
-.is-setmenu .section.section--top{ margin: 10px 0 8px !important; }     /* top header spacing tighter */
-.is-setmenu #set-menu .card:first-of-type{ margin-top: 8px !important; } /* A세트 위 여백 축소 */
-
-/* Center pill overlapped at top border */
-.is-setmenu #set-menu .panel{ position: relative; overflow: visible; padding-top: 42px; }
-.is-setmenu #set-menu .swap-row{ position: relative; display:block; }
-.is-setmenu #set-menu .pill{
-  position: absolute !important;
-  left: 50% !important;
-  top: 0 !important;
-  transform: translate(-50%, -50%) !important;
-  margin: 0 !important;
-  z-index: 5;
-}
-
-/* Images in one row across full width */
-.is-setmenu #set-menu .groupbox{
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  justify-content: space-between !important;
-  align-items: flex-end !important;
-  gap: 16px !important;
-  width: 100%;
-}
-.is-setmenu #set-menu .groupbox .item{ flex: 0 1 auto; text-align: center; }
-.is-setmenu #set-menu .groupbox .item img{
-  max-height: 80px; height: auto; width: auto; max-width: 100%; object-fit: contain;
-}
-
-/* Mobile: keep same overlapped pill, but let items wrap if too many */
-@media (max-width: 720px){
-  .is-setmenu #set-menu .panel{ padding-top: 38px; }
-  .is-setmenu #set-menu .groupbox{ flex-wrap: wrap !important; justify-content: center !important; gap: 12px; }
-  .is-setmenu #set-menu .groupbox .item img{ max-height: 70px; }
-}
-
-/* Prevent any outer spill */
-.is-setmenu #set-menu, .is-setmenu #set-menu *{ box-sizing: border-box; max-width:100%; }
-
