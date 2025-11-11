@@ -12,7 +12,7 @@
   .row{display:flex; align-items:center; gap:12px;}
   .row .mid{display:flex; flex-direction:column; gap:2px; flex:1; min-width:0;}
   .kr{font-size:18px; font-weight:700;}
-  .chip{display:inline-block; background:#2a2a3d; color:#c4b5fd; border:1px solid #4338ca33; padding:2px 8px; border-radius:999px; font-size:12px; margin-left:8px;}
+  .chip{display:inline-block; background:#2a2a3d; color:#c4b5fd; border:1px solid #4338ca33; padding:2px 8px; border-radius:999px; font-size:12px; margin-left:4px;}
   .en{font-size:17px; color:var(--muted); font-style:italic;}
   .desc{margin-top:4px; font-size:13px; line-height:1.5; color:#d1d5db;}
   .pricecol{margin-left:auto; text-align:right;}
