@@ -64,39 +64,17 @@
 @media (max-width:720px){ .page-pad{ padding:0 4px 90px } }
 
 /* ===== Top hero (logo) ===== */
-.top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:centermargin-top:10px; }
+.top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:center}
 .top-hero img{width:min(380px,70vw);height:auto;filter:drop-shadow(0 10px 40px rgba(124,58,237,.35))}
 .top-title{margin-top:20px;font-weight:800;letter-spacing:1px;opacity:.9}
 
 /* ===== Image thumb slot (always reserved) ===== */
-.thumb-wrap{
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  height: auto;
-  flex: 0 0 auto;
-  margin-right: 8px;
-}
+.thumb-wrap{flex:0 0 auto;height:80px;border-radius:10px;;display:flex;
+  align-items:center;justify-content:center;margin-right:6px;border:1px solid rgba(67,56,202,.25)}
 .thumb-wrap.empty::before{content:"";display:block;width:40px;height:40px;border:2px dashed rgba(200,200,220,.35);
   border-radius:8px;opacity:.6}
-.row .thumb, .thumb-wrap img, .menu-image img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-.row .thumb, .thumb-wrap img, .menu-image img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
+.row .thumb{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform .25s ease, filter .25s ease}
+.row .thumb:hover{transform:scale(1.05);filter:brightness(1.06)}
 
 
 /* --- Original SET MENU styles (restored) --- */
