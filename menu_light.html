@@ -788,10 +788,11 @@
 #set-menu .card{width:100%;max-width:680px;margin:0 auto 10px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.06)}
 #set-menu .row{display:flex;justify-content:center;align-items:center;gap:20px;margin:6px 0 6px}
 #set-menu .bottle img{height:83px;width:auto;object-fit:contain;filter:drop-shadow(0 0 10px rgba(0,0,0,.45))}
-#set-menu .plus,#set-menu .or{display:flex;align-items:center;justify-content:center;height:83px;width:auto;font-weight:900}
+#set-menu .plus,#set-menu .or{display:flex;align-items:center;justify-content:center;height:83px;width:auto;font-weight:900;font-size:16px;color:#f3f4f6}
 #set-menu .plus{font-size:22px;opacity:.95}
-#set-menu .or{font-size:16px;color:#f3f4f6}
-#set-menu .row.harda{gap:12px;flex-wrap:nowrap}
+#set-menu .or{display:flex;align-items:center;justify-content:center;height:83px;width:auto;font-weight:900;font-size:16px;color:#f3f4f6}
+#set-menu .bottle.harda-mid{display:flex;align-items:center;gap:10px;white-space:nowrap}
+#set-menu .row.harda{gap:10px;flex-wrap:nowrap;align-items:center;justify-content:center}
 #set-menu .row.hardb{gap:12px;flex-wrap:nowrap}
 @media (max-width:560px){#set-menu .row.hardb .bottle img{height:76px}}
 @media (max-width:520px){#set-menu .row.hardb{gap:8px}#set-menu .row.hardb .bottle img{height:70px}}
@@ -853,7 +854,7 @@
       <div class="swap-row">
         <div class="pill">+0</div>
         <div class="groupbox">
-          <div class="item"><img src="images/taaka_vodka.png"><div class="small">타카 (플레인·핑크·그레이프)</div></div>
+          <div class="item"><div style="display:flex;gap:6px;align-items:flex-end"><img src="images/taaka_vodka.png"><img src="images/taaka_pink.png"><img src="images/taaka_grape.png"></div><div class="small">타카 (플레인·핑크·그레이프)</div></div>
           <div class="item"><img src="images/fireball.png"><div class="small">파이어볼</div></div>
           <div class="item"><img src="images/waikiki_rum.png"><div class="small">와이키키</div></div>
           <div class="item"><img src="images/benchmark.png"><div class="small">벤치마크</div></div>
