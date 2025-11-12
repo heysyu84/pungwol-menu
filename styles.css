@@ -61,7 +61,7 @@
 .nav a.active{color:#111;background:var(--gold);border-color:#b68c34}
 @media (max-width:720px){.nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;top:auto;bottom:0;border-top:1px solid #27273a;border-bottom:none}}
 .page-pad{ padding:20px 12px 100px; }
-@media (max-width:720px){ .page-pad{ padding:8px 12px 120px; } }
+@media (max-width:720px){ .page-pad{ padding:8px 8px 120px; } }
 
 /* ===== Top hero (logo) ===== */
 .top-hero{min-height:calc(30vh - 50px);display:grid;place-items:center;text-align:center}
