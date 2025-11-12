@@ -116,3 +116,9 @@
 @media (max-width:720px){
   .nav a{ flex:1 1 22%; max-width:25%; }
 }
+
+/* === Prevent bottom-fixed nav from covering content on mobile === */
+@media (max-width: 720px){
+  main.page-pad{ padding-bottom: 24px !important; }
+  main.page-pad::after{ content:""; display:block; height: var(--navH, 120px); }
+}
