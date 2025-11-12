@@ -60,7 +60,7 @@
 .nav a:hover{box-shadow:0 0 0 2px #7c3aed55,0 0 22px 2px #7c3aed55}
 .nav a.active{color:#111;background:var(--gold);border-color:#b68c34}
 @media (max-width:720px){.nav{ flex-wrap:wrap; justify-content:center; flex-wrap:wrap;top:auto;bottom:0;border-top:1px solid #27273a;border-bottom:none}}
-.page-pad{ padding:20px 12px 100px; }
+.page-pad{ padding:10px 12px 100px; }
 @media (max-width:720px){ .page-pad{ padding:8px 8px 120px; } }
 
 /* ===== Top hero (logo) ===== */
@@ -85,27 +85,6 @@
 
 .row .thumb:hover{transform:scale(1.05);filter:brightness(1.06)}
 
-
-/* --- Original SET MENU styles (restored) --- */
-.set-price-box {
-.set-price-box span {
-.set-name {
-
-/* Image sizing update */
-
-.row .thumb {
-  height: 80px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform .25s ease, filter .25s ease;
-}
-
-
-@media (max-width:720px){
-  .nav a{ flex:1 1 45%; text-align:center; }
-}
 
 .nav a{
   flex:1 1 22%;
