@@ -1,115 +1,82 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>PUNGWOL – TOP</title>
-  <!-- 하위 리소스는 /menu/ 경로 -->
-  <link rel="stylesheet" href="menu/styles.css"/>
-
-  <!-- 인덱스 전용: 중앙 정렬(외부 CSS와 충돌 없이 최소만 오버라이드) -->
-  <style>
-    :root{ --navH: 100px; } /* 초기값, JS로 실제 높이 반영 */
-    main.page-pad{ padding:0 !important; }
-    .center {
-      min-height: calc(100vh - var(--navH));
-      display: grid;
-      place-items: center;  /* 가로/세로 모두 중앙 */
-      text-align: center;
-      padding: 0 12px;
-    }
-    .center .top-hero { min-height: auto; margin: 0; }
-    .center .top-hero img { max-width: min(420px, 70vw); height: auto; }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>PUNGWOL – TOP</title>
+<link href="menu/styles.css" rel="stylesheet"/>
 </head>
-<body>
-  <noscript>JavaScript가 꺼져 있어 페이지 전환 시 주소가 보일 수 있습니다.</noscript>
+<body class="index">
+<noscript>JavaScript가 꺼져 있어 페이지 전환 시 주소가 보일 수 있습니다.</noscript>
+<nav class="nav" id="nav">
+<a class="active" href="index.html">TOP</a>
+<a href="menu/cocktails-beer.html">COCKTAIL &amp; BEER</a>
+<a href="menu/one-mix-bomb.html">ONE MIX &amp; BOMB</a>
+<a href="menu/shots.html">SHOT</a>
+<a href="menu/beverage.html">BEVERAGE</a>
+<a href="menu/hard-liqueur.html">HARD &amp; LIQUEUR</a>
+<a href="menu/whisky-champagne.html">WHISKY &amp; CHAMPAGNE</a>
+<a href="menu/set-menu.html">SET MENU</a>
+</nav>
+<main class="page-pad">
+<div class="wrap" id="app">
+<section class="top-hero">
+<div>
+<div class="title">PUNGWOL LOUNGE MENU</div><img alt="Pungwol Lounge Logo" src="menu/images/logo.png"/>
+<div class="top-title">Welcome to PUNGWOL LOUNGE</div>
+</div>
+</section>
+</div>
+</main>
+<script data-spa="pungwol">
+(function () {
+  const app = document.getElementById('app');
+  const nav = document.getElementById('nav');
+  if (!app || !nav) return;
 
-  <!-- 고정 네비게이션 -->
-  <nav class="nav" id="nav">
-    <a class="active" href="index.html">TOP</a>
-    <a href="menu/cocktails-beer.html">COCKTAIL &amp; BEER</a>
-    <a href="menu/one-mix-bomb.html">ONE MIX &amp; BOMB</a>
-    <a href="menu/shots.html">SHOT</a>
-    <a href="menu/beverage.html">BEVERAGE</a>
-    <a href="menu/hard-liqueur.html">HARD &amp; LIQUEUR</a>
-    <a href="menu/whisky-champagne.html">WHISKY &amp; CHAMPAGNE</a>
-    <a href="menu/set-menu.html">SET MENU</a>
-  </nav>
+  // Visual fade helper
+  function fade(to, done) {
+    app.style.transition = 'opacity .18s ease';
+    app.style.opacity = to;
+    setTimeout(() => { if (done) done(); }, 180);
+  }
 
-  <main class="page-pad">
-    <div class="wrap" id="app">
-      <section class="center">
-        <section class="top-hero">
-          <div>
-            <div class="title">PUNGWOL LOUNGE MENU</div>
-            <img src="menu/images/logo.png" alt="Pungwol Lounge Logo"/>
-            <div class="top-title">Welcome to PUNGWOL LOUNGE</div>
-          </div>
-        </section>
-      </section>
-    </div>
-  </main>
+  async function loadPage(url, linkEl) {
+    try {
+      fade('0.35');
+      const res = await fetch(url, {cache: 'no-cache'});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const dom = new DOMParser().parseFromString(text, 'text/html');
+      const nextWrap = dom.querySelector('main .wrap');
+      const nextTitle = dom.querySelector('title');
+      if (nextWrap) app.innerHTML = nextWrap.innerHTML;
+      if (nextTitle) document.title = nextTitle.textContent;
 
-  <!-- nav의 실제 높이를 CSS 변수로 반영 (상/하단 고정 모두 대응) -->
-  <script>
-  (function(){
-    function setNavH(){
-      var nav = document.getElementById('nav');
-      if(!nav) return;
-      var h = Math.ceil(nav.getBoundingClientRect().height || 100);
-      document.documentElement.style.setProperty('--navH', h + 'px');
+      // Active state
+      nav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+      if (linkEl) linkEl.classList.add('active');
+    } finally {
+      fade('1');
     }
-    window.addEventListener('load', setNavH);
-    window.addEventListener('resize', setNavH);
-  })();
-  </script>
+  }
 
-  <!-- SPA 네비게이션 스크립트 (원본 유지) -->
-  <script data-spa="pungwol">
-  (function () {
-    const app = document.getElementById('app');
-    const nav = document.getElementById('nav');
-    if (!app || !nav) return;
+  // Intercept nav clicks
+  nav.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const url = a.getAttribute('href');
+    if (!url || !url.endsWith('.html')) return;
+    e.preventDefault();
+    // No history.pushState => URL stays the same
+    loadPage(url, a).catch(() => { window.location.href = url; });
+  });
 
-    function fade(to, done) {
-      app.style.transition = 'opacity .18s ease';
-      app.style.opacity = to;
-      setTimeout(() => { if (done) done(); }, 180);
-    }
-
-    async function loadPage(url, linkEl) {
-      try {
-        fade('0.35');
-        const res = await fetch(url, {cache: 'no-cache'});
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const text = await res.text();
-        const dom = new DOMParser().parseFromString(text, 'text/html');
-        const nextWrap = dom.querySelector('main .wrap');
-        const nextTitle = dom.querySelector('title');
-        if (nextWrap) app.innerHTML = nextWrap.innerHTML;
-        if (nextTitle) document.title = nextTitle.textContent;
-
-        nav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
-        if (linkEl) linkEl.classList.add('active');
-      } finally {
-        fade('1');
-      }
-    }
-
-    nav.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      const url = a.getAttribute('href');
-      if (!url || !url.endsWith('.html')) return;
-      e.preventDefault();
-      loadPage(url, a).catch(() => { window.location.href = url; });
-    });
-
-    nav.querySelectorAll('a[href$=".html"]').forEach(a => {
-      a.addEventListener('mouseenter', () => { fetch(a.href, {cache: 'force-cache'}).catch(()=>{}); });
-    });
-  })();
-  </script>
-</body>
+  // Prefetch on hover
+  nav.querySelectorAll('a[href$=".html"]').forEach(a => {
+    a.addEventListener('mouseenter', () => { fetch(a.href, {cache: 'force-cache'}).catch(()=>{}); });
+  });
+})();
+</script></body>
 </html>
