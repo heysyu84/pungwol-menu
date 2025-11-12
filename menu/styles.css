@@ -124,11 +124,3 @@
   /* Extra safety spacer at the end of content */
   .wrap::after{ content:""; display:block; height: 200px; }
 }
-
-/* ===== PATCH: prevent bottom-fixed nav from covering content on mobile ===== */
-@media (max-width: 720px){
-  /* Give the page enough bottom breathing room regardless of per-page markup/JS */
-  body{ padding-bottom: 240px !important; }
-  main.page-pad{ padding-bottom: 240px !important; }
-  .wrap{ padding-bottom: 240px !important; }
-}
