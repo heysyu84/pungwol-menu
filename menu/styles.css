@@ -86,6 +86,27 @@
 .row .thumb:hover{transform:scale(1.05);filter:brightness(1.06)}
 
 
+/* --- Original SET MENU styles (restored) --- */
+.set-price-box {
+.set-price-box span {
+.set-name {
+
+/* Image sizing update */
+
+.row .thumb {
+  height: 80px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+
+@media (max-width:720px){
+  .nav a{ flex:1 1 45%; text-align:center; }
+}
+
 .nav a{
   flex:1 1 22%;
   text-align:center;
