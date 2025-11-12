@@ -140,14 +140,36 @@ body.index .top-hero img{
   height: auto;
 }
 
+.nav::-webkit-scrollbar{ display: none; } /* WebKit */
+
+  .nav a{
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 6px 10px;
+    min-width: auto;
+    flex: 0 0 auto; /* prevent shrinking to zero */
+  }
+
+  /* If the nav is bottom-fixed, ensure content isn't covered */
+  main.page-pad{
+    padding-bottom: 72px;
+  }
+}
+
 /* ==========================================
-   Responsive: Navigation (≤720px)
+   Responsive: Navigation (≤720px) — bottom fixed
    - Smaller nav buttons
    - Horizontal scroll if overflow
-   - Extra bottom padding for fixed navs
+   - Fixed to bottom; add content bottom padding
    ========================================== */
 @media (max-width: 720px){
   .nav{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
     display: flex;
     gap: 6px;
     padding: 8px 10px;
@@ -165,8 +187,8 @@ body.index .top-hero img{
     flex: 0 0 auto; /* prevent shrinking to zero */
   }
 
-  /* If the nav is bottom-fixed, ensure content isn't covered */
+  /* ensure content isn't covered by fixed nav (safety height) */
   main.page-pad{
-    padding-bottom: 72px;
+    padding-bottom: 120px;
   }
 }
