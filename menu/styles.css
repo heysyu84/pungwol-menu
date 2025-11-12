@@ -117,8 +117,10 @@
   .nav a{ flex:1 1 22%; max-width:25%; }
 }
 
-/* === Prevent bottom-fixed nav from covering content on mobile === */
+/* === Stronger mobile bottom spacer to avoid overlap with fixed nav === */
 @media (max-width: 720px){
-  main.page-pad{ padding-bottom: 24px !important; }
-  main.page-pad::after{ content:""; display:block; height: var(--navH, 120px); }
+  /* Ensure ample space regardless of JS-set --navH */
+  main.page-pad{ padding-bottom: 200px !important; }
+  /* Extra safety spacer at the end of content */
+  .wrap::after{ content:""; display:block; height: 200px; }
 }
