@@ -192,3 +192,42 @@ body.index .top-hero img{
     padding-bottom: 120px;
   }
 }
+
+/* ==========================================
+   Responsive: Navigation (≤720px) — FORCE BOTTOM
+   ========================================== */
+@media (max-width: 720px){
+  /* Stronger selector + !important to beat sticky/top rules */
+  body .nav{
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    z-index: 1000 !important;
+
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    background: inherit; /* keep existing bg */
+  }
+  body .nav::-webkit-scrollbar{ display: none; }
+  body .nav{
+    scrollbar-width: none;
+  }
+
+  body .nav a{
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    padding: 6px 10px !important;
+    min-width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* ensure content isn't covered by fixed nav */
+  main.page-pad{
+    padding-bottom: var(--navH, 120px) !important;
+  }
+}
