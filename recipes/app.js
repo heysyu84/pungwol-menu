@@ -47,13 +47,14 @@ function volumeNumber(ml) {
   return state.unit === 'ml' ? String(ml) : String(Number((ml/ML_PER_OZ).toFixed(2)));
 }
 function volumeLabel(ml) { return volumeNumber(ml)+state.unit; }
-function cupValue(oz) { return state.unit === 'oz' ? oz+'oz' : Math.round(oz*ML_PER_OZ)+'ml'; }
+function cupValue(oz) { return oz+'oz('+Math.round(oz*ML_PER_OZ)+'ml)'; }
+function shotCupValue(ml) { return Number((ml/ML_PER_OZ).toFixed(2))+'oz('+ml+'ml)'; }
 function cupLabel(recipe) {
-  if(recipe.shot) return '샷잔 '+volumeLabel(recipe.shotCapacityMl);
-  return recipe.cups.map((oz)=>state.unit==='oz'?oz:Math.round(oz*ML_PER_OZ)).join(' / ')+state.unit;
+  if(recipe.shot) return '샷잔 '+shotCupValue(recipe.shotCapacityMl);
+  return recipe.cups.map(cupValue).join(' / ');
 }
 function formatTextVolumes(text) {
-  return String(text).replace(/(\d+(?:\.\d+)?)\s*ml/g,(_match,n)=>volumeLabel(Number(n)));
+  return String(text).replace(/(\d+(?:\.\d+)?oz\(\d+(?:\.\d+)?ml\))|(\d+(?:\.\d+)?)\s*ml/g,(_match,cup,n)=>cup||volumeLabel(Number(n)));
 }
 function recipeBrief(recipe) {
   const shortNames={'화이트럼':'럼','스위트앤사워':'사워','오렌지주스':'오렌지','크랜베리주스':'크랜베리','파인애플주스':'파인애플'};
@@ -118,7 +119,7 @@ function renderDetailVolumes() {
   const recipe=state.current;
   $('#detail-tags').innerHTML=[recipe.nonAlcohol?'논알콜':recipe.method,cupLabel(recipe),`얼음 ${recipe.ice}`].map((tag)=>`<span class="detail-tag">${escapeHTML(tag)}</span>`).join('');
   if(recipe.nonAlcohol) $('#detail-tags').innerHTML+=`<span class="detail-tag">${recipe.method}</span>`;
-  if(recipe.shot) $('#cup-explainer').textContent='샷잔 용량은 첨부 PDF의 '+volumeLabel(recipe.shotCapacityMl)+' 기준입니다.';
+  if(recipe.shot) $('#cup-explainer').textContent='샷잔 용량은 첨부 PDF의 '+shotCupValue(recipe.shotCapacityMl)+' 기준입니다.';
   else {
     const preferred=cupValue(recipe.cups[0]);
     const hasFill=recipe.ingredients.some(([,amount])=>amount==='Fill');
@@ -136,10 +137,10 @@ function applyUnit() {
   });
   const next=state.unit==='ml'?'oz':'ml';
   $('#detail-unit-button').textContent=next+' ↔';
-  $('#detail-unit-button').setAttribute('aria-label',next+'로 보기');
+  $('#detail-unit-button').setAttribute('aria-label','재료를 '+next+'로 보기');
   $('#font-preview-amount').textContent=volumeLabel(40);
   $('#review-cups').textContent=[9,12,14].map(cupValue).join(' / ');
-  $('#review-shot').textContent=volumeLabel(45);
+  $('#review-shot').textContent=shotCupValue(45);
   $('#review-changes').innerHTML=REVIEW.changes.map(([title,copy])=>`<section class="review-change"><h3>${escapeHTML(title)}</h3><p>${escapeHTML(formatTextVolumes(copy))}</p></section>`).join('');
   if(state.current && $('#recipe-dialog').open) renderDetailVolumes();
 }
