@@ -1204,7 +1204,11 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     values.forEach(v=>v.feeLines=wrap(v.fee,Math.max(2,feeWidth-unitW-4),feeSize,(t,s)=>F.price(t,s,700)));
     const feeH=Math.max(compact?5.5:5.8,...values.map(v=>v.feeLines.length*feeSize*1.1+1.5));
     if(page.choiceFeePosition==='left'){
-      const textInset=Math.max(margin+2,feeWidth+5),textWidth=Math.max(2,cw-margin-2-textInset),rows=[];
+      // In the connected L box, use the empty joining space before the existing
+      // text column. Wider badges fall back inside their own row without overlap.
+      const bottlePadding=Math.min(...page.cards.filter(c=>c.kind==='bottle'&&c.visible!==false).map(c=>c.boxPadding??D.setBoxPadding));
+      const gutterFee=unifiedBottleBox&&compact&&feeWidth+3<=12+margin+2+bottlePadding;
+      const textInset=gutterFee?margin+2:Math.max(margin+2,feeWidth+5),textWidth=Math.max(2,cw-margin-2-textInset),rows=[];
       for(let i=0;i<values.length;i+=cols){
         const cells=values.slice(i,i+cols).map(v=>{
           const label=wrap(v.choice.label,textWidth,labelSize,(t,s)=>choiceLabelMeasure(t,s,page.choiceLabelWeight)),bottles=wrap(v.choice.bottles,textWidth,fs,(t,s)=>F.choice(t,s,page.choiceFontWeight)),labelH=label.length*labelSize*1.1,bodyH=bottles.length*fs*1.1;
@@ -1212,7 +1216,7 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
         });
         rows.push({cells,height:margin*2+2.2+Math.max(feeH,...cells.map(v=>v.textH))});
       }
-      return {leftFee:true,compact,twoRows,choices,cols,cw,gap,margin,textInset,fs,labelSize,feeSize,unitSize,unit,unitW,feeWidth,feeH,rows,height:rows.reduce((n,row)=>n+row.height,0)+gap*(rows.length-1)};
+      return {leftFee:true,gutterFee,compact,twoRows,choices,cols,cw,gap,margin,textInset,fs,labelSize,feeSize,unitSize,unit,unitW,feeWidth,feeH,rows,height:rows.reduce((n,row)=>n+row.height,0)+gap*(rows.length-1)};
     }
     if(compact){
       values.forEach(v=>v.label=wrap(v.choice.label,Math.max(12,innerWidth*.18),labelSize,(t,s)=>choiceLabelMeasure(t,s,page.choiceLabelWeight)));
@@ -1255,7 +1259,7 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
           art+=lines(cell.label,tx,contentTop+layout.labelSize,layout.labelSize,{fill:D.accent,'font-weight':page.choiceLabelWeight,'data-font-role':'choice-label','data-choice':cell.choice.id});
           art+=lines(cell.bottles,tx,contentTop+cell.labelH+(cell.label.length&&cell.bottles.length?1:0)+layout.fs,layout.fs,{fill:D.ink,'font-weight':page.choiceFontWeight,'data-font-role':'choice-bottles','data-choice':cell.choice.id});
         });
-        if(unifiedBottleBox&&i<layout.rows.length-1)art+=line(x+2,cy+row.height+layout.gap/2,x+width-2,cy+row.height+layout.gap/2,{stroke:bottleDesign.frame,'stroke-width':D.boxWeight,opacity:.6,'data-choice-row-divider':row.cells[0].choice.id});
+        if(unifiedBottleBox&&i<layout.rows.length-1)art+=line(layout.gutterFee?x+layout.textInset-layout.feeWidth-3:x+2,cy+row.height+layout.gap/2,x+width-2,cy+row.height+layout.gap/2,{stroke:bottleDesign.frame,'stroke-width':D.boxWeight,opacity:.6,'data-choice-row-divider':row.cells[0].choice.id});
         cy+=row.height+layout.gap;
       }
       body+=block('bottle-choices','choices','추가 금액별 선택 보틀',x,y,width,layout.height,art);return;
