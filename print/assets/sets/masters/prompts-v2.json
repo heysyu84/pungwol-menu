@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "date": "2026-10-12",
+  "tool": "Built-in image_gen",
+  "purpose": "Shared unchanged bottle masters for print-quality set compositions",
+  "images": [
+    {
+      "key": "selected",
+      "output": "selected-v2.png",
+      "references": [
+        "sparkling-v1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Extract ONLY the LEFT amber generic selected spirit bottle from this image as ONE standalone transparent high-resolution bottle asset. Remove the 365 bottle completely. Preserve the selected bottle's cream rectangular label and its large dark brown question mark '?' exactly in this elegant rounded serif style, shape, stroke, relative size and centered position. Keep amber glass, warm highlights, dark brown cap and complete base. It will be used as the SAME image in three menus so typography must be one fixed master. Do not add or redesign any label, no other bottle. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "richebel-brut",
+      "output": "richebel-brut-v2.png",
+      "references": [
+        "제목 없음.png",
+        "image(9).png",
+        "image(7).png"
+      ],
+      "prompt": "Use case: product-mockup. Draw ONLY ONE Richebel Brut bottle, the GOLD-neck/BLACK-body-label bottle at RIGHT in reference 1. Reference 2 is an exact enlarged neck-label reference. Reference 3 shows its silver lower body and black diamond label. Reproduce this actual packaging faithfully. Crucial: the WHITE neck/shoulder label is a pointed shield shape, NOT a straight rectangular band: its upper edge arches upward over the gold foil at front; its lower edge tapers down to a pronounced centered V point over the silver geometric-patterned body. Center a large GOLD R with curved sweeping tail and EXACTLY ONE gold diamond to the R's RIGHT. Small side RICHEBEL lettering wraps around the sides. Match the contour and placement of this white shield precisely to reference 2, with label and R clearly visible. Long slender gold-foil neck, complete silver geometrically patterned body, BLACK diamond RICHEBEL ICE lower label. No pink bottle, no extra diamond to left of R, no cylindrical white strip, no gold-colored exposed bottom glass. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "richebel-rose",
+      "output": "richebel-rose-v2.png",
+      "references": [
+        "제목 없음.png",
+        "image(10).png",
+        "download.png"
+      ],
+      "prompt": "Use case: product-mockup. Draw ONLY ONE Richebel Rosé bottle, the PINK-neck/PINK-body-label bottle at LEFT in reference 1. Reference 2 is the exact enlarged neck-label reference. Reference 3 shows the actual lower silver patterned body and pink diamond label. Faithfully reproduce this actual bottle. Crucial white neck label: a pointed WHITE shield panel at the base of the pink foil neck, NOT a straight rectangular band; upper edge arches upward at center over the pink foil, lower edge converges to a sharp centered V point onto the silver geometric-patterned shoulder. Clearly center the large PINK R with curved sweeping tail and EXACTLY ONE pink diamond to the R's RIGHT, matching reference 2. Small RICHEBEL lettering wraps around the sides. Long slender pink metallic foil neck, silver fine geometric patterned body down to bottom, PINK diamond RICHEBEL ICE ROSÉ label. No gold neck, no extra diamond to left, no cylindrical white strip, no exposed colored glass base. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "brut365",
+      "output": "brut365-v2.png",
+      "references": [
+        "image(3).png"
+      ],
+      "prompt": "Use case: product-mockup. Faithfully draw ONE 365 Brut sparkling bottle from this exact reference: dark green glass, slender black foil neck with subtle gold accents, black square label with large GOLD 365, small BRUT. No other brand or bottles. Warm approachable refined product illustration with natural proportions, softly warm highlights. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "tred",
+      "output": "tred-v2.png",
+      "references": [
+        "image(2).png"
+      ],
+      "prompt": "Use case: product-mockup. Faithfully draw ONE T-RED liqueur bottle matching this exact reference: vivid RED frosted bottle body, long WHITE neck and silver-white foil cap, large outlined T, RED and TOVARITCH label with smaller PREMIUM LIQUEUR text. Keep the real slim silhouette and packaging. Warm approachable product illustration, softly rendered glass. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "moet",
+      "output": "moet-v2.png",
+      "references": [
+        "moet-brut.png"
+      ],
+      "prompt": "Use case: product-mockup. Faithfully draw ONE Moët & Chandon Brut Impérial bottle from this exact product reference: gold textured foil neck, black star and MOËT, red circular seal at neck base, dark green glass and cream rectangular MOËT & CHANDON IMPÉRIAL BRUT label. Sophisticated refined detailed product illustration with satin gold and luminous glass, only the actual bottle. Do not reproduce source checkerboard. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    },
+    {
+      "key": "veuve",
+      "output": "veuve-v2.png",
+      "references": [
+        "veuve.jpg"
+      ],
+      "prompt": "Use case: product-mockup. Faithfully draw ONE Veuve Clicquot Yellow Label Brut bottle from the reference: slim gold foil neck, yellow shoulder band with circular seal, dark green glass and signature yellow rectangular Veuve Clicquot BRUT label. Sophisticated refined detailed product illustration, satin gold foil and natural dimensional glass, only actual bottle. One complete upright bottle only, isolated on genuinely transparent alpha-zero background, no backdrop, glow behind bottle, stage, props or text outside the product. Full cap and base visible, very small transparent margin. Crisp print-quality high-resolution product illustration, at least 1500 pixels high, soft even studio light and refined glass/foil texture."
+    }
+  ]
+}

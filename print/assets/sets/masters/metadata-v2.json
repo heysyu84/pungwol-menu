@@ -1,0 +1,86 @@
+{
+  "selected": {
+    "file": "selected-v2.png",
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      246,
+      19,
+      521,
+      1485
+    ],
+    "bytes": 1577297
+  },
+  "richebel-brut": {
+    "file": "richebel-brut-v2.png",
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      293,
+      16,
+      430,
+      1492
+    ],
+    "bytes": 1772713
+  },
+  "richebel-rose": {
+    "file": "richebel-rose-v2.png",
+    "width": 1034,
+    "height": 1520,
+    "bounds": [
+      301,
+      9,
+      433,
+      1469
+    ],
+    "bytes": 904499
+  },
+  "brut365": {
+    "file": "brut365-v2.png",
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      272,
+      10,
+      481,
+      1503
+    ],
+    "bytes": 1275660
+  },
+  "tred": {
+    "file": "tred-v2.png",
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      352,
+      6,
+      320,
+      1525
+    ],
+    "bytes": 1398971
+  },
+  "moet": {
+    "file": "moet-v2.png",
+    "width": 811,
+    "height": 1940,
+    "bounds": [
+      136,
+      33,
+      541,
+      1876
+    ],
+    "bytes": 1424067
+  },
+  "veuve": {
+    "file": "veuve-v2.png",
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      308,
+      16,
+      408,
+      1474
+    ],
+    "bytes": 1310148
+  }
+}
