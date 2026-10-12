@@ -374,7 +374,7 @@ async function mapConcurrent(values,fn,limit=4){
   return results;
 }
 
-const VERSION = 12;
+const VERSION = 13;
 const PT_MM=25.4/72;
 const FONT_OPTIONS={
   sans:{label:'맑은 고딕 · 기본 고딕',family:'"Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", "Noto Sans CJK KR", Arial, sans-serif'},
@@ -423,15 +423,15 @@ function newItem() { return {id:uid('item'),name:'새 메뉴',english:'',price:1
 function itemPrice(row,mode='wan') {
   return formatPrice(row.price,mode)+(row.sixPrice==null?'':' / '+formatPrice(row.sixPrice,mode));
 }
-function newSection(column=0) { return {id:uid('section'),name:'NEW CATEGORY',column,visible:true,fontPt:0,fontWeight:0,boxVisible:null,boxStyle:'inherit',minHeightMm:0,items:[newItem()]}; }
+function newSection(column=0) { return {id:uid('section'),name:'NEW CATEGORY',column,visible:true,fontPt:0,fontWeight:0,boxVisible:null,boxStyle:'inherit',boxPadding:null,minHeightMm:0,items:[newItem()]}; }
 function newCard() {
-  return {id:uid('card'),kind:'bottle',name:'NEW BOTTLE SET',english:'',description:'',visible:true,fontPt:0,priceFontPt:0,englishFontPt:0,detailFontPt:0,componentWeight:0,boxStyle:'inherit',image:null,pricing:'auto',basePrice:200000,
+  return {id:uid('card'),kind:'bottle',name:'NEW BOTTLE SET',english:'',description:'',visible:true,fontPt:0,priceFontPt:0,englishFontPt:0,componentEnglishFontPt:0,detailFontPt:0,componentWeight:0,boxStyle:'inherit',boxPadding:null,image:null,pricing:'auto',basePrice:200000,
     components:[{id:uid('part'),name:'선택 보틀',english:'Selected Bottle',quantity:1,unit:'병'},{id:uid('part'),name:'365 브뤼',english:'365 Brut',quantity:1,unit:'병'}],
     tiers:[{id:uid('tier'),label:'STANDARD',extra:0,price:200000,bottles:''},{id:uid('tier'),label:'SELECT',extra:20000,price:220000,bottles:''}]};
 }
 function newPage(type='menu') {
   return {id:uid('page'),type,title:type==='sets'?'BOTTLE SET MENU':type==='mixed'?'BOTTLES & SETS':'MENU',subtitle:'',footer:'',columns:type==='mixed'?2:3,
-    menuBalance:false,menuRowGap:0,menuSectionGap:0,columnDividers:false,columnDividerPositions:null,columnDividerWeight:.28,columnDividerOpacity:.65,shotPriceBelow:true,longPriceBelow:false,allPricesBelow:false,titleUnderline:'diamond',titleSides:'none',titleDecorWidth:46,mixedLayout:'side',mixedSide:'setsLeft',bottleShare:.5,bottleHeading:'BOTTLE SETS',champagneHeading:'CHAMPAGNE SETS',bottleHeadingFontPt:0,champagneHeadingFontPt:0,bottlePhotosVisible:true,champagnePhotosVisible:true,choicesVisible:true,choiceFontPt:10,bottleSetColumns:3,champagneColumns:3,setLayout:'stack',setDivider:true,reserveImage:null,reserveImageVisible:true,reserveImageScale:85,reserveBoxStyle:'none',choices:defaultChoices(),placements:{},images:[],sections:type!=='sets'?[newSection()]:[],cards:type!=='menu'?[newCard()]:[]};
+    menuBalance:false,menuRowGap:0,menuSectionGap:0,columnDividers:false,columnDividerPositions:null,columnDividerWeight:.28,columnDividerOpacity:.65,shotPriceBelow:true,longPriceBelow:false,allPricesBelow:false,titleUnderline:'diamond',titleSides:'none',titleDecorWidth:46,mixedLayout:'side',mixedSide:'setsLeft',bottleShare:.5,bottleHeading:'BOTTLE SETS',champagneHeading:'CHAMPAGNE SETS',bottleHeadingFontPt:0,champagneHeadingFontPt:0,bottlePhotosVisible:true,champagnePhotosVisible:true,champagnePriceFontPt:0,champagnePriceBoxes:true,choicesVisible:true,choiceFontPt:10,choiceLabelFontPt:9,choiceFeeFontPt:0,choiceBoxPadding:0,bottleSetColumns:3,champagneColumns:3,setLayout:'stack',setDivider:true,reserveImage:null,reserveImageVisible:true,reserveImageScale:85,reserveBoxStyle:'none',choices:defaultChoices(),placements:{},images:[],sections:type!=='sets'?[newSection()]:[],cards:type!=='menu'?[newCard()]:[]};
 }
 function defaultChoices(){return [
   ['STANDARD',0,'파이어볼 · 벤치마크 No. 8 · 휘틀리 · 코코카리바'],
@@ -535,8 +535,8 @@ function seedDocument({legacy=false}={}) {
     sets.cards.forEach((c,i)=>{[c.name,c.english]=names[i];c.components.forEach(v=>{if(v.name==='리쉬벨 브뤼 로제')v.name='리쉬벨 브뤼 or 로제';v.english=componentEnglishName(v.name);});c.tiers.forEach((t,j)=>t.label=['STANDARD','SELECT','SELECT+','PREMIUM'][j]);});
   }
   const doc={version:legacy?1:VERSION,id:uid('doc'),brand:'풍월관',orientation:'landscape',pages:[drinks,bottles,sets],
-    design:{...PALETTES[0],frameStyle:'reference',frameInset:6,frameWeight:.48,frameGap:2.5,cornerSize:15,radius:3,lineStyle:'solid',boxStyle:'reference',boxWeight:.28,glow:false,glowColor:'#E4B476',glowRadius:1.1,glowOpacity:.6,
-      margin:14,font:'sans',englishFont:'sans',fontRoles:defaultFontRoles(),fontWeight:400,priceWeight:700,categoryWeight:700,setWeight:700,componentWeight:400,categorySize:15*PT_MM,leaderWeight:.32,leaderOpacity:.72,fontSize:15*PT_MM,englishSize:10*PT_MM,detailSize:10*PT_MM,rowGap:.8,titleSize:8.5,showEnglish:!legacy,showNumbers:true,leaders:true,autoFit:false,priceMode:'wan',showBottle:true,customFrame:null}};
+    design:{...PALETTES[0],frameStyle:'reference',frameInset:6,frameWeight:.48,frameGap:2.5,cornerSize:15,radius:3,lineStyle:'solid',boxStyle:'reference',boxWeight:.28,setBoxPadding:3,categoryBoxPadding:1.2,glow:false,glowColor:'#E4B476',glowRadius:1.1,glowOpacity:.6,
+      margin:14,font:'sans',englishFont:'sans',fontRoles:defaultFontRoles(),fontWeight:400,priceWeight:700,categoryWeight:700,setWeight:700,componentWeight:400,categorySize:15*PT_MM,leaderWeight:.32,leaderOpacity:.72,fontSize:15*PT_MM,englishSize:10*PT_MM,setEnglishSize:10*PT_MM,componentEnglishSize:10*PT_MM,detailSize:10*PT_MM,rowGap:.8,titleSize:8.5,showEnglish:!legacy,showNumbers:true,leaders:true,autoFit:false,priceMode:'wan',showBottle:true,customFrame:null}};
   if(!legacy){
     sets.cards.push(...champagneCards());mergePages(doc,bottles.id,sets.id);bottles.sections.forEach((s,i)=>s.column=LATEST_BOTTLES[i][1]);
     bottles.bottlePhotosVisible=false;bottles.champagnePhotosVisible=false;
@@ -605,9 +605,11 @@ function upgradeDocument(raw) {
     p.placements=p.placements||{};p.images=p.images||[];p.mixedLayout=p.mixedLayout||'side';p.mixedSide=p.mixedSide||'setsLeft';p.bottleShare=p.bottleShare||.5;
     p.bottleHeading=p.bottleHeading??'BOTTLE SETS';p.champagneHeading=p.champagneHeading??'CHAMPAGNE SETS';
     p.bottleHeadingFontPt=p.bottleHeadingFontPt??0;p.champagneHeadingFontPt=p.champagneHeadingFontPt??0;
+    p.champagnePriceFontPt=p.champagnePriceFontPt===undefined?0:p.champagnePriceFontPt;p.champagnePriceBoxes=p.champagnePriceBoxes??true;p.choiceLabelFontPt=p.choiceLabelFontPt===undefined?9:p.choiceLabelFontPt;p.choiceFeeFontPt=p.choiceFeeFontPt===undefined?0:p.choiceFeeFontPt;p.choiceBoxPadding=p.choiceBoxPadding===undefined?0:p.choiceBoxPadding;
     p.choices=p.choices||defaultChoices();p.choicesVisible=p.choicesVisible??true;p.choiceFontPt=p.choiceFontPt??10;p.bottleSetColumns=p.bottleSetColumns??3;p.champagneColumns=p.champagneColumns??3;
     for(const c of p.cards||[]){c.kind=c.kind||(/CHAMPAGNE|MO[EË]T|BLANC FOUSSY|VIP|샴페인|모엣|블랑 푸시|^RICHEBEL SET$|^리쉬벨 세트$/i.test(c.name)?'champagne':'bottle');c.english=c.english||'';c.fontPt=c.fontPt??0;c.priceFontPt=c.priceFontPt??0;c.englishFontPt=c.englishFontPt??0;c.detailFontPt=c.detailFontPt??0;c.componentWeight=c.componentWeight??0;c.boxStyle=c.boxStyle||'inherit';c.image=c.image||null;}
     p.bottlePhotosVisible=p.bottlePhotosVisible??(p.type!=='mixed'||Boolean(p.cards?.some(c=>c.kind!=='champagne'&&c.image)));p.champagnePhotosVisible=p.champagnePhotosVisible??(p.type!=='mixed'||Boolean(p.cards?.some(c=>c.kind==='champagne'&&c.image)));
+    for(const c of p.cards||[]){c.boxPadding=c.boxPadding===undefined?null:c.boxPadding;c.componentEnglishFontPt=c.componentEnglishFontPt===undefined?(oldVersion<13?c.englishFontPt:0):c.componentEnglishFontPt;}
     if(oldVersion<3){
       if(p.mixedLayout==='auto')p.mixedLayout='side';if(p.bottleShare===.62)p.bottleShare=.5;
       for(const s of p.sections||[])for(const row of s.items||[])if(!row.english)row.english=ENGLISH_NAMES[row.name]||'';
@@ -634,7 +636,7 @@ function upgradeDocument(raw) {
     }
     for(const s of p.sections||[]){s.fontPt=s.fontPt??0;s.fontWeight=s.fontWeight??0;
       if(oldVersion<11&&/^(?:COCKTAIL|칵테일)$/i.test(s.name)&&s.fontPt===15)s.fontPt=0;
-      s.boxVisible=s.boxVisible??p.type==='mixed';s.boxStyle=s.boxStyle??'inherit';s.minHeightMm=s.minHeightMm===undefined?0:s.minHeightMm;for(const r of s.items||[]){r.fontPt=r.fontPt??0;r.englishFontPt=r.englishFontPt??0;r.sixPrice=r.sixPrice??null;}}
+      s.boxPadding=s.boxPadding===undefined?null:s.boxPadding;s.boxVisible=s.boxVisible??p.type==='mixed';s.boxStyle=s.boxStyle??'inherit';s.minHeightMm=s.minHeightMm===undefined?0:s.minHeightMm;for(const r of s.items||[]){r.fontPt=r.fontPt??0;r.englishFontPt=r.englishFontPt??0;r.sixPrice=r.sixPrice??null;}}
     for(const c of p.cards||[])for(const v of c.components||[]){
       v.english=v.english??componentEnglishName(v.name);
       const name=setChoiceName(v.name),english=setChoiceName(v.english);
@@ -645,8 +647,10 @@ function upgradeDocument(raw) {
   d.version=VERSION;
   if(d.design&&!('customFrame' in d.design))d.design.customFrame=null;
   if(d.design){
-    const defaults={boxStyle:'reference',boxWeight:.28,glow:false,glowColor:'#E4B476',glowRadius:1.1,glowOpacity:.6,englishSize:10*PT_MM,detailSize:10*PT_MM,fontWeight:400,priceWeight:700,categoryWeight:700,setWeight:700,componentWeight:400,categorySize:Math.max(15*PT_MM,d.design.fontSize||0),leaderWeight:.32,leaderOpacity:.72};
+    const defaults={boxStyle:'reference',boxWeight:.28,setBoxPadding:3,categoryBoxPadding:1.2,glow:false,glowColor:'#E4B476',glowRadius:1.1,glowOpacity:.6,englishSize:10*PT_MM,detailSize:10*PT_MM,fontWeight:400,priceWeight:700,categoryWeight:700,setWeight:700,componentWeight:400,categorySize:Math.max(15*PT_MM,d.design.fontSize||0),leaderWeight:.32,leaderOpacity:.72};
     for(const [key,value] of Object.entries(defaults))if(!(key in d.design))d.design[key]=value;
+    if(!('setEnglishSize' in d.design))d.design.setEnglishSize=d.design.englishSize;
+    if(!('componentEnglishSize' in d.design))d.design.componentEnglishSize=d.design.englishSize;
     if(!('englishFont' in d.design))d.design.englishFont=d.design.font;
     if(!('fontRoles' in d.design))d.design.fontRoles=defaultFontRoles();
     if(oldVersion<4){d.design.fontSize=15*PT_MM;d.design.autoFit=false;d.design.margin=14;d.design.rowGap=.8;d.design.titleSize=8.5;}
@@ -706,7 +710,7 @@ function adjustPagePrices(page,{mode,value,roundTo=1000}) {
   }
 }
 function validateDocument(raw) {
-  if(!raw||typeof raw!=='object'||![1,2,3,4,5,6,7,8,9,10,11,VERSION].includes(raw.version)) throw new Error('이 편집기의 메뉴판 백업 파일이 아닙니다.');
+  if(!raw||typeof raw!=='object'||![1,2,3,4,5,6,7,8,9,10,11,12,VERSION].includes(raw.version)) throw new Error('이 편집기의 메뉴판 백업 파일이 아닙니다.');
   raw=upgradeDocument(raw);
   const ids=new Set();
   const id=v=>{if(typeof v!=='string'||!/^[a-zA-Z0-9_-]{1,100}$/.test(v)||ids.has(v))throw new Error('항목 식별자가 올바르지 않거나 중복됩니다.');ids.add(v);return v;};
@@ -727,7 +731,7 @@ function validateDocument(raw) {
   for(const key of ['paper','ink','accent','frame','card']) {
     if(!/^#[0-9a-fA-F]{6}$/.test(d[key]||''))throw new Error('색상 값이 올바르지 않습니다.');design[key]=d[key];
   }
-  for(const [key,min,max] of [['frameInset',5,20],['frameWeight',.15,2],['frameGap',1,6],['cornerSize',5,25],['radius',0,15],['margin',12,35],['fontSize',2.1,25.4],['categorySize',2.1,25.4],['englishSize',2.1,25.4],['detailSize',2.1,25.4],['leaderWeight',.15,.8],['leaderOpacity',.2,1],['boxWeight',.15,1.5],['glowRadius',.2,4],['glowOpacity',.1,1],['rowGap',.3,5],['titleSize',7,18]])design[key]=n(d[key],min,max);
+  for(const [key,min,max] of [['frameInset',5,20],['frameWeight',.15,2],['frameGap',1,6],['cornerSize',5,25],['radius',0,15],['margin',12,35],['fontSize',2.1,25.4],['categorySize',2.1,25.4],['englishSize',2.1,25.4],['setEnglishSize',2.1,25.4],['componentEnglishSize',2.1,25.4],['detailSize',2.1,25.4],['leaderWeight',.15,.8],['leaderOpacity',.2,1],['boxWeight',.15,1.5],['setBoxPadding',0,15],['categoryBoxPadding',0,15],['glowRadius',.2,4],['glowOpacity',.1,1],['rowGap',.3,5],['titleSize',7,18]])design[key]=n(d[key],min,max);
   design.frameStyle=enumValue(d.frameStyle,Object.keys(FRAME_LABELS));
   design.font=enumValue(d.font,Object.keys(FONT_OPTIONS));
   design.englishFont=enumValue(d.englishFont,Object.keys(FONT_OPTIONS));
@@ -757,14 +761,15 @@ function validateDocument(raw) {
     columnDividerPositions:p.columnDividerPositions===null?null:[...new Set(list(p.columnDividerPositions,4).map(v=>{n(v,1,4);if(!Number.isInteger(v))throw new Error('구분선 위치를 확인해주세요.');return v;}))].sort((a,b)=>a-b),allPricesBelow:flag(p.allPricesBelow),
     titleUnderline:enumValue(p.titleUnderline,Object.keys(TITLE_DECOR_LABELS)),titleSides:enumValue(p.titleSides,Object.keys(TITLE_DECOR_LABELS)),titleDecorWidth:n(p.titleDecorWidth,16,180),
     setLayout:enumValue(p.setLayout,['stack','columns']),setDivider:flag(p.setDivider),reserveImageVisible:flag(p.reserveImageVisible),reserveImageScale:n(p.reserveImageScale,10,100),reserveBoxStyle:enumValue(p.reserveBoxStyle,['inherit',...Object.keys(BOX_LABELS)]),
+    champagnePriceFontPt:n(p.champagnePriceFontPt,0,72),champagnePriceBoxes:flag(p.champagnePriceBoxes),choiceLabelFontPt:n(p.choiceLabelFontPt,6,72),choiceFeeFontPt:n(p.choiceFeeFontPt,0,72),choiceBoxPadding:n(p.choiceBoxPadding,0,15),
     reserveImage:p.reserveImage?{name:str(p.reserveImage.name,120),dataUrl:imageData(p.reserveImage.dataUrl),fit:enumValue(p.reserveImage.fit,['contain','cover']),opacity:n(p.reserveImage.opacity,.1,1)}:null,
     mixedLayout:enumValue(p.mixedLayout,['auto','side','stack']),mixedSide:enumValue(p.mixedSide,['setsLeft','bottlesLeft']),bottleShare:n(p.bottleShare,.35,.75),
     bottleHeading:str(p.bottleHeading,120),champagneHeading:str(p.champagneHeading,120),bottleHeadingFontPt:n(p.bottleHeadingFontPt,0,72),champagneHeadingFontPt:n(p.champagneHeadingFontPt,0,72),bottlePhotosVisible:flag(p.bottlePhotosVisible),champagnePhotosVisible:flag(p.champagnePhotosVisible),placements:{},choicesVisible:flag(p.choicesVisible),choiceFontPt:n(p.choiceFontPt,6,72),bottleSetColumns:n(p.bottleSetColumns,1,3),champagneColumns:n(p.champagneColumns,1,3),
     choices:list(p.choices,8).map(v=>({id:id(v.id),label:str(v.label,70),extra:n(v.extra,-1e9,1e9),bottles:str(v.bottles,500),visible:flag(v.visible)})),
     images:list(p.images,30).map(v=>({id:id(v.id),name:str(v.name,120),dataUrl:imageData(v.dataUrl),x:n(v.x,0,420),y:n(v.y,0,420),width:n(v.width,2,420),height:n(v.height,2,420),opacity:n(v.opacity,.1,1),visible:flag(v.visible),layer:enumValue(v.layer,['front','back'])})),
-    sections:list(p.sections,60).map(s=>({id:id(s.id),name:str(s.name,120),column:n(s.column,0,4),visible:flag(s.visible),fontPt:n(s.fontPt,0,72),fontWeight:enumValue(s.fontWeight,[0,...WEIGHT_OPTIONS.map(v=>v[0])]),boxVisible:flag(s.boxVisible),boxStyle:enumValue(s.boxStyle,['inherit',...Object.keys(BOX_LABELS)]),minHeightMm:n(s.minHeightMm,0,2000),
+    sections:list(p.sections,60).map(s=>({id:id(s.id),name:str(s.name,120),column:n(s.column,0,4),visible:flag(s.visible),fontPt:n(s.fontPt,0,72),fontWeight:enumValue(s.fontWeight,[0,...WEIGHT_OPTIONS.map(v=>v[0])]),boxVisible:flag(s.boxVisible),boxStyle:enumValue(s.boxStyle,['inherit',...Object.keys(BOX_LABELS)]),boxPadding:s.boxPadding===null?null:n(s.boxPadding,0,15),minHeightMm:n(s.minHeightMm,0,2000),
       items:list(s.items,200).map(r=>({id:id(r.id),name:str(r.name,300),english:str(r.english,300),price:n(r.price,0,1e9),sixPrice:r.sixPrice==null?null:n(r.sixPrice,0,1e9),visible:flag(r.visible),fontPt:n(r.fontPt,0,72),englishFontPt:n(r.englishFontPt,0,72)}))})),
-    cards:list(p.cards,40).map(c=>({id:id(c.id),kind:enumValue(c.kind,['bottle','champagne']),name:str(c.name,150),english:str(c.english,150),description:str(c.description,500),visible:flag(c.visible),fontPt:n(c.fontPt,0,72),priceFontPt:n(c.priceFontPt,0,72),englishFontPt:n(c.englishFontPt,0,72),detailFontPt:n(c.detailFontPt,0,72),componentWeight:enumValue(c.componentWeight,[0,...WEIGHT_OPTIONS.map(v=>v[0])]),boxStyle:enumValue(c.boxStyle,['inherit',...Object.keys(BOX_LABELS)]),image:c.image?{name:str(c.image.name,120),dataUrl:imageData(c.image.dataUrl),fit:enumValue(c.image.fit,['contain','cover']),opacity:n(c.image.opacity,.1,1)}:null,pricing:enumValue(c.pricing,['auto','manual']),basePrice:n(c.basePrice,0,1e9),
+    cards:list(p.cards,40).map(c=>({id:id(c.id),kind:enumValue(c.kind,['bottle','champagne']),name:str(c.name,150),english:str(c.english,150),description:str(c.description,500),visible:flag(c.visible),fontPt:n(c.fontPt,0,72),priceFontPt:n(c.priceFontPt,0,72),englishFontPt:n(c.englishFontPt,0,72),componentEnglishFontPt:n(c.componentEnglishFontPt,0,72),detailFontPt:n(c.detailFontPt,0,72),componentWeight:enumValue(c.componentWeight,[0,...WEIGHT_OPTIONS.map(v=>v[0])]),boxStyle:enumValue(c.boxStyle,['inherit',...Object.keys(BOX_LABELS)]),boxPadding:c.boxPadding===null?null:n(c.boxPadding,0,15),image:c.image?{name:str(c.image.name,120),dataUrl:imageData(c.image.dataUrl),fit:enumValue(c.image.fit,['contain','cover']),opacity:n(c.image.opacity,.1,1)}:null,pricing:enumValue(c.pricing,['auto','manual']),basePrice:n(c.basePrice,0,1e9),
       components:list(c.components,20).map(v=>({id:id(v.id),name:str(v.name,200),english:str(v.english,300),quantity:n(v.quantity,0,999),unit:str(v.unit,30)})),
       tiers:list(c.tiers,8).map(t=>({id:id(t.id),label:str(t.label,70),extra:n(t.extra,-1e9,1e9),price:n(t.price,0,1e9),bottles:str(t.bottles,500)}))}))
   }));
@@ -917,12 +922,12 @@ function menuLayout(doc,page,availableWidth,availableHeight,measure) {
   const D=doc.design,gap=7,F=Object.fromEntries(Object.keys(FONT_ROLES).map(role=>[role,fontMeasure(D,role,measure)]));
   function build(cols,scale,rowGap=page.menuRowGap||D.rowGap,sectionGap=page.menuSectionGap||4) {
     if(page.sections.some(s=>s.visible!==false&&(s.boxVisible??page.type==='mixed')))sectionGap=Math.max(sectionGap,2.8);
-    const cw=(availableWidth-gap*(cols-1))/cols;
+    const columnWidth=(availableWidth-gap*(cols-1))/cols;
     const columns=Array.from({length:cols},()=>[]);const heights=Array(cols).fill(0),groups=[];
     for(const s of page.sections.filter(s=>s.visible!==false)) {
-      const col=Math.min(cols-1,s.column);
+      const col=Math.min(cols-1,s.column),boxed=s.boxVisible??page.type==='mixed',paddingOffset=boxed?((s.boxPadding??D.categoryBoxPadding)-1.2)*scale:0,cw=Math.max(2,columnWidth-paddingOffset*2);
       const headingSize=(s.fontPt?s.fontPt*PT_MM:D.categorySize)*scale,headingWeight=s.fontWeight||D.categoryWeight,heading=wrap(s.name,cw,headingSize,(t,s)=>F.category(t,s,headingWeight));
-      const headerH=heading.length*headingSize*1.13+3*scale;
+      const headerH=heading.length*headingSize*1.13+3*scale+paddingOffset;
       const items=s.items.filter(r=>r.visible!==false).map(r=>{
         const fs=(r.fontPt?r.fontPt*PT_MM:D.fontSize)*scale,eng=(r.englishFontPt?r.englishFontPt*PT_MM:D.englishSize)*scale;
         const price=itemPrice(r,D.priceMode),leaderGap=D.leaders?3.5*scale:0;
@@ -956,8 +961,8 @@ function menuLayout(doc,page,availableWidth,availableHeight,measure) {
         }
         return {row:r,name,english,price,priceLines,mainLines,height,fs,eng,reserve,priceBelow,stackDetails,priceY,englishY};
       });
-      const naturalHeight=headerH+items.reduce((a,b)=>a+b.height,0),contentHeight=Math.max(naturalHeight,(s.minHeightMm||0)*scale),height=contentHeight+sectionGap*scale;
-      groups.push({section:s,heading,headingSize,headingWeight,headerH,items,height,naturalHeight,contentHeight,scale,col});
+      const naturalHeight=headerH+items.reduce((a,b)=>a+b.height,0)+paddingOffset,contentHeight=Math.max(naturalHeight,(s.minHeightMm||0)*scale),height=contentHeight+sectionGap*scale;
+      groups.push({section:s,heading,headingSize,headingWeight,headerH,items,height,naturalHeight,contentHeight,scale,col,paddingOffset,contentWidth:cw});
     }
     if(page.menuBalance){
       for(const group of [...groups].sort((a,b)=>b.height-a.height)){const col=heights.indexOf(Math.min(...heights));group.col=col;heights[col]+=group.height;}
@@ -984,7 +989,7 @@ function menuLayout(doc,page,availableWidth,availableHeight,measure) {
       }
       for(const group of groups)columns[group.col].push(group);
     }else for(const group of groups){columns[group.col].push(group);heights[group.col]+=group.height;}
-    return {columns,heights:heights.map((h,i)=>h-(columns[i].length?sectionGap*scale:0)),cw,gap,scale,sectionGap,rowGap};
+    return {columns,heights:heights.map((h,i)=>h-(columns[i].length?sectionGap*scale:0)),cw:columnWidth,gap,scale,sectionGap,rowGap};
   }
   let first=build(page.columns,1),max=Math.max(0,...first.heights);
   if(page.menuBalance&&max>availableHeight){
@@ -1035,20 +1040,20 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     for(let ci=0;ci<layout.columns.length;ci++){
       const x=x0+ci*(layout.cw+layout.gap);let y=y0;
       for(const group of layout.columns[ci]){
-        const start=y,sc=layout.scale;let g=lines(group.heading,x,y+group.headingSize,group.headingSize,{'font-weight':group.headingWeight,fill:D.ink,'data-font-role':'category'});
-        y+=group.headerH;g+=line(x,y-2*sc,x+layout.cw,y-2*sc,{stroke:D.accent,'stroke-width':.42*sc});
+        const start=y,sc=layout.scale,tx=x+group.paddingOffset,cw=group.contentWidth;let g=lines(group.heading,tx,y+group.paddingOffset+group.headingSize,group.headingSize,{'font-weight':group.headingWeight,fill:D.ink,'data-font-role':'category'});
+        y+=group.headerH;g+=line(tx,y-2*sc,tx+cw,y-2*sc,{stroke:D.accent,'stroke-width':.42*sc});
         const extraHeight=group.contentHeight-group.naturalHeight,rowExtra=group.items.length>1?extraHeight/(group.items.length-1):0;
         for(let ri=0;ri<group.items.length;ri++) {
           const r=group.items[ri];
-          let rowSvg=rect(x,y-.5,layout.cw,r.height,{fill:'none','pointer-events':'all'});
-          if(!moveMode&&selected===r.row.id)rowSvg+=rect(x-.5,y-.5,layout.cw+1,r.height,activeStroke);
-          rowSvg+=lines(r.name,x,y+r.fs+(r.mainLines-r.name.length)*r.fs*1.1,r.fs,{fill:D.ink,'font-weight':D.fontWeight,'data-font-role':'menu-name'});
+          let rowSvg=rect(tx,y-.5,cw,r.height,{fill:'none','pointer-events':'all'});
+          if(!moveMode&&selected===r.row.id)rowSvg+=rect(tx-.5,y-.5,cw+1,r.height,activeStroke);
+          rowSvg+=lines(r.name,tx,y+r.fs+(r.mainLines-r.name.length)*r.fs*1.1,r.fs,{fill:D.ink,'font-weight':D.fontWeight,'data-font-role':'menu-name'});
           const priceY=y+r.priceY+(r.priceLines.length-1)*r.fs*1.1;
           const leaderName=r.priceBelow?(r.stackDetails?'':r.english.at(-1)||''):r.name.at(-1)||'',leaderSize=r.priceBelow?r.eng:r.fs,leaderWeight=r.priceBelow?400:D.fontWeight;
-          const nameEnd=x+F.menu(leaderName,leaderSize,leaderWeight)+1.8*sc,priceStart=x+layout.cw-F.price(r.priceLines.at(-1),r.fs,D.priceWeight)-2*sc;
+          const nameEnd=tx+F.menu(leaderName,leaderSize,leaderWeight)+1.8*sc,priceStart=tx+cw-F.price(r.priceLines.at(-1),r.fs,D.priceWeight)-2*sc;
           if(D.leaders&&priceStart-nameEnd>1.5*sc)rowSvg+=line(nameEnd,priceY-.8*sc,priceStart,priceY-.8*sc,{stroke:D.ink,'stroke-width':D.leaderWeight*sc,'stroke-linecap':'round','stroke-dasharray':'.01 '+num(1.25*sc),opacity:D.leaderOpacity,'data-menu-leader':r.row.id});
-          rowSvg+=lines(r.priceLines,x+layout.cw,y+r.priceY,r.fs,{'text-anchor':'end','font-weight':D.priceWeight,fill:D.ink,'data-font-role':'menu-price'});
-          if(r.english.length)rowSvg+=lines(r.english,x,y+r.englishY,r.eng,{fill:D.ink,opacity:.85,'data-font-role':'menu-english'});
+          rowSvg+=lines(r.priceLines,tx+cw,y+r.priceY,r.fs,{'text-anchor':'end','font-weight':D.priceWeight,fill:D.ink,'data-font-role':'menu-price'});
+          if(r.english.length)rowSvg+=lines(r.english,tx,y+r.englishY,r.eng,{fill:D.ink,opacity:.85,'data-font-role':'menu-english'});
           g+=el('g',{'data-entity':r.row.id,'data-section':group.section.id,style:'cursor:pointer'},rowSvg);y+=r.height+(ri<group.items.length-1?rowExtra:0);
         }
         y=Math.max(y,start+group.contentHeight);
@@ -1069,22 +1074,22 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     body+=block(id,'heading',id==='champagne-heading'?'샴페인 세트 제목':'보틀 세트 제목',x,y,width,l.height,lines(l.heading,x,y+l.hs,l.hs,{'font-weight':D.categoryWeight,fill:D.accent,'data-font-role':'category'}));
   }
   function cardMetrics(c,width,{champagne=false,photoHeight=16,photosVisible=true,sc=1,sidePhoto=false,tierBoxes=false}={}){
-    const pad=3,fs=(c.fontPt?c.fontPt*PT_MM:D.fontSize)*sc,es=(c.englishFontPt?c.englishFontPt*PT_MM:D.englishSize)*sc,ds=(c.detailFontPt?c.detailFontPt*PT_MM:D.detailSize)*sc;
-    const photoW=photosVisible?(sidePhoto?Math.min(50,width*.36):champagne?Math.min(42,width*.3):width-pad*2):0,inner=width-pad*2-((champagne||sidePhoto)&&photosVisible?photoW+(sidePhoto?3:2):0),headingWidth=sidePhoto?inner:width-pad*2,componentWeight=c.componentWeight||D.componentWeight;
+    const pad=c.boxPadding??D.setBoxPadding,fs=(c.fontPt?c.fontPt*PT_MM:D.fontSize)*sc,es=(c.englishFontPt?c.englishFontPt*PT_MM:D.setEnglishSize)*sc,ces=(c.componentEnglishFontPt?c.componentEnglishFontPt*PT_MM:D.componentEnglishSize)*sc,ds=(c.detailFontPt?c.detailFontPt*PT_MM:D.detailSize)*sc;
+    const photoW=photosVisible?(sidePhoto?Math.min(50,width*.36)*(champagne?1.1:1):champagne?Math.min(42,width*.3):width-pad*2):0,inner=width-pad*2-((champagne||sidePhoto)&&photosVisible?photoW+(sidePhoto?3:2):0),headingWidth=sidePhoto?inner:width-pad*2,componentWeight=c.componentWeight||D.componentWeight;
     photoHeight=photosVisible&&!sidePhoto?photoHeight:0;
     const title=wrap(c.name,headingWidth,fs,(t,s)=>F.set(t,s,D.setWeight)),english=D.showEnglish&&c.english&&c.english!==c.name?wrap(c.english,headingWidth,es,F.set):[];
     const componentGap=.3*sc;
     const comps=c.components.map(v=>{
-      const quantity=String(v.quantity),reserveName=F.price(quantity,ds,componentWeight)+5*sc,reserveEnglish=F.price(quantity,es,componentWeight)+5*sc;
+      const quantity=String(v.quantity),reserveName=F.price(quantity,ds,componentWeight)+5*sc,reserveEnglish=F.price(quantity,ces,componentWeight)+5*sc;
       const name=wrap(setChoiceName(v.name),Math.max(2,inner-reserveName),ds,(t,s)=>F.component(t,s,componentWeight));
       return {id:v.id,quantity,name,
-        english:D.showEnglish?wrap(setChoiceName(v.english),Math.max(2,name.length?inner:inner-reserveEnglish),es,(t,s)=>F.component(t,s,componentWeight)):[]};
+        english:D.showEnglish?wrap(setChoiceName(v.english),Math.max(2,name.length?inner:inner-reserveEnglish),ces,(t,s)=>F.component(t,s,componentWeight)):[]};
     });
     const description=wrap(c.description,inner,ds,F.note);
-    const headH=title.length*fs*1.1+english.length*es*1.1,compH=comps.reduce((h,v)=>h+v.name.length*ds*1.1+v.english.length*es*1.1,0)+Math.max(0,comps.length-1)*componentGap+description.length*ds*1.1;
+    const headH=title.length*fs*1.1+english.length*es*1.1,compH=comps.reduce((h,v)=>h+v.name.length*ds*1.1+v.english.length*ces*1.1,0)+Math.max(0,comps.length-1)*componentGap+description.length*ds*1.1;
     const tierCols=Math.min(4,Math.max(1,c.tiers.length)),labelSize=8*PT_MM*sc;
     const neededLabel=Math.max(0,...c.tiers.map(t=>F.choice(t.label,labelSize,600)))+2;
-    const tierWidth=sidePhoto?width-pad*2:inner,candidates=tierCols===4?[4,2,1]:Array.from({length:tierCols},(_,i)=>tierCols-i),actualTierCols=candidates.find(n=>tierWidth/n>=neededLabel)||1,tw=tierWidth/actualTierCols,ps=c.priceFontPt?c.priceFontPt*PT_MM*sc:fs*1.2;
+    const tierWidth=sidePhoto?width-pad*2:inner,candidates=tierCols===4?[4,2,1]:Array.from({length:tierCols},(_,i)=>tierCols-i),actualTierCols=candidates.find(n=>tierWidth/n>=neededLabel)||1,tw=tierWidth/actualTierCols,pricePt=champagne&&page.champagnePriceFontPt?page.champagnePriceFontPt:c.priceFontPt,ps=pricePt?pricePt*PT_MM*sc:fs*1.2;
     const tiers=[];
     for(let i=0;i<c.tiers.length;i+=actualTierCols){
       const cells=c.tiers.slice(i,i+actualTierCols).map(t=>({tier:t,label:wrap(t.label,tw-2,labelSize,(t,s)=>F.choice(t,s,600)),price:wrap(formatPrice(setPrice(c,t),D.priceMode,true),tw-2,ps,(t,s)=>F.price(t,s,D.priceWeight)),bottles:wrap(t.bottles,tw-2,ds,F.choice)}));
@@ -1093,7 +1098,7 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     }
     const prices=champagne?wrap(c.tiers.map(t=>formatPrice(setPrice(c,t),D.priceMode,true)).join(' / '),inner,ps,(t,s)=>F.price(t,s,D.priceWeight)):[];
     const tierH=champagne?prices.length*ps*1.1+(tierBoxes?2.4:0):tiers.reduce((n,v)=>n+v.height,0)+(tierBoxes?1.2:0);
-    return {pad,fs,es,ds,ps,labelSize,inner,photoW,photoHeight,photosVisible,componentWeight,componentGap,title,english,comps,description,headH,compH,tiers,tw,prices,tierH,sidePhoto,tierBoxes,required:pad*2+headH+compH+2.2+tierH+(champagne||!photoHeight?0:photoHeight+2),sc};
+    return {pad,fs,es,ces,ds,ps,labelSize,inner,photoW,photoHeight,photosVisible,componentWeight,componentGap,title,english,comps,description,headH,compH,tiers,tw,prices,tierH,sidePhoto,tierBoxes,required:pad*2+headH+compH+2.2+tierH+(champagne||!photoHeight?0:photoHeight+2),sc};
   }
   function cardPhoto(c,x,y,w,h){
     const clipId='photo-clip-'+c.id;
@@ -1125,7 +1130,7 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
         }
         cy+=values.length*size*1.1;
       }
-      componentRow(part.name,l.ds,'ko',1,true);componentRow(part.english,l.es,'en',.85,!part.name.length);
+      componentRow(part.name,l.ds,'ko',1,true);componentRow(part.english,l.ces,'en',.85,!part.name.length);
       art+=el('g',{'data-set-component':part.id},component);
       if(i<l.comps.length-1)cy+=l.componentGap;
     });
@@ -1133,7 +1138,7 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     if(champagne){
       const px=x+w-l.pad-l.photoW;
       if(l.photosVisible)art+=cardPhoto(c,px,y+l.pad+(l.sidePhoto?0:l.headH+3),l.photoW,Math.max(2,h-l.pad*2-(l.sidePhoto?0:l.headH+3)));
-      if(l.tierBoxes)art+=rect(x+l.pad,y+h-l.pad-l.tierH,l.inner,l.tierH,{fill:'none',stroke:D.frame,'stroke-width':D.boxWeight,'data-price-box':c.id});
+      if(l.tierBoxes&&page.champagnePriceBoxes)art+=rect(x+l.pad,y+h-l.pad-l.tierH,l.inner,l.tierH,{fill:'none',stroke:D.frame,'stroke-width':D.boxWeight,'data-price-box':c.id});
       art+=lines(l.prices,x+l.pad+(l.tierBoxes?l.inner/2:0),y+h-l.pad-l.tierH+l.ps+(l.tierBoxes?1.2:0),l.ps,{fill:D.accent,'font-weight':D.priceWeight,'data-font-role':'set-price',...(l.tierBoxes?{'text-anchor':'middle'}:{})});
     }else{
       const tierY=y+h-l.pad-l.tierH;
@@ -1157,55 +1162,63 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
   function choiceMetrics(width,compact=false){
     const choices=page.choicesVisible?page.choices.filter(v=>v.visible!==false):[];
     if(!choices.length)return {choices,rows:[],height:0};
+    const cols=compact?1:width>=122?2:1,gap=2,cw=(width-gap*(cols-1))/cols,fs=page.choiceFontPt*PT_MM,labelSize=page.choiceLabelFontPt*PT_MM,feeSize=(page.choiceFeeFontPt||(compact?10:11))*PT_MM,unitSize=7*PT_MM;
+    const margin=page.choiceBoxPadding,usable=Math.max(10,cw-margin*2),innerWidth=Math.max(10,width-margin*2);
+    const unit=D.priceMode==='wan'?'':'원',unitW=unit?F.price(unit,unitSize)+.8:0;
+    const values=choices.map(choice=>({choice,fee:(choice.extra>=0?'+':'−')+(D.priceMode==='wan'?inputAmount(Math.abs(choice.extra)):Math.abs(choice.extra).toLocaleString('ko-KR'))}));
+    const feeWidth=Math.min(usable*(compact?.4:.48),Math.max(13,...values.map(v=>F.price(v.fee,feeSize,700)+unitW+6)));
+    values.forEach(v=>v.feeLines=wrap(v.fee,Math.max(2,feeWidth-unitW-4),feeSize,(t,s)=>F.price(t,s,700)));
+    const feeH=Math.max(compact?5.5:5.8,...values.map(v=>v.feeLines.length*feeSize*1.1+1.5));
     if(compact){
-      const fs=page.choiceFontPt*PT_MM,labelSize=9*PT_MM,feeSize=10*PT_MM,unitSize=7*PT_MM,gap=2,rows=choices.map(choice=>{
-        const fee=(choice.extra>=0?'+':'−')+(D.priceMode==='wan'?inputAmount(Math.abs(choice.extra)):Math.abs(choice.extra).toLocaleString('ko-KR')),unit=D.priceMode==='wan'?'만원':'원';
-        const feeWidth=Math.max(19,F.price(fee,feeSize,700)+F.price(unit,unitSize)+6),label=wrap(choice.label,Math.max(12,width*.18),labelSize,(t,s)=>F.choice(t,s,700)),nameWidth=Math.max(12,...label.map(t=>F.choice(t,labelSize,700))),labelWidth=nameWidth+feeWidth+3;
-        const bottles=wrap(choice.bottles,Math.max(10,width-labelWidth-8),fs,F.choice),headerH=Math.max(label.length*labelSize*1.1,5.5);
-        return {choice,fee,unit,feeWidth,labelWidth,nameWidth,label,bottles,headerH,height:Math.max(headerH,bottles.length*fs*1.1)+2};
+      values.forEach(v=>v.label=wrap(v.choice.label,Math.max(12,innerWidth*.18),labelSize,(t,s)=>F.choice(t,s,700)));
+      const nameWidth=Math.max(12,...values.flatMap(v=>v.label.map(t=>F.choice(t,labelSize,700)))),labelWidth=nameWidth+feeWidth+3;
+      const stacked=innerWidth-labelWidth-8<Math.max(24,fs*5);
+      const rows=values.map(v=>{
+        if(stacked)v.label=wrap(v.choice.label,Math.max(5,innerWidth-feeWidth-9),labelSize,(t,s)=>F.choice(t,s,700));
+        const bottles=wrap(v.choice.bottles,stacked?innerWidth-4:Math.max(10,innerWidth-labelWidth-8),fs,F.choice),headerH=Math.max(v.label.length*labelSize*1.1,feeH);
+        return {...v,bottles,headerH,height:margin*2+(stacked?headerH+1.8+bottles.length*fs*1.1+3:Math.max(headerH,bottles.length*fs*1.1)+2)};
       });
-      return {compact:true,choices,rows,fs,labelSize,feeSize,unitSize,gap,height:rows.reduce((sum,row)=>sum+row.height,0)+gap*(rows.length-1)};
+      return {compact:true,stacked,margin,choices,rows,fs,labelSize,feeSize,unitSize,unit,unitW,feeWidth,feeH,nameWidth,labelWidth,gap,height:rows.reduce((sum,row)=>sum+row.height,0)+gap*(rows.length-1)};
     }
-    const cols=width>=122?2:1,gap=2,cw=(width-gap*(cols-1))/cols,fs=page.choiceFontPt*PT_MM,labelSize=9*PT_MM,feeSize=11*PT_MM,unitSize=7*PT_MM,rows=[];
-    for(let i=0;i<choices.length;i+=cols){
-      const cells=choices.slice(i,i+cols).map(c=>{
-        const fee=(c.extra>=0?'+':'−')+(D.priceMode==='wan'?inputAmount(Math.abs(c.extra)):Math.abs(c.extra).toLocaleString('ko-KR')),unit=D.priceMode==='wan'?'만원':'원';
-        const feeWidth=Math.max(23,F.price(fee,feeSize,700)+F.price(unit,unitSize)+7),label=wrap(c.label,Math.max(12,cw-feeWidth-9),labelSize,(t,s)=>F.choice(t,s,700));
-        const headerH=Math.max(5.8,label.length*labelSize*1.1),bottles=wrap(c.bottles,cw-7,fs,F.choice);
-        return {choice:c,label,fee,unit,feeWidth,headerH,bottles};
-      });
-      const headerH=Math.max(...cells.map(c=>c.headerH)),bodyH=Math.max(1,...cells.map(c=>c.bottles.length))*fs*1.1;
-      rows.push({cells,headerH,height:2.5+headerH+2.7+bodyH+2});
+    const rows=[];
+    for(let i=0;i<values.length;i+=cols){
+      const cells=values.slice(i,i+cols).map(v=>({...v,label:wrap(v.choice.label,Math.max(5,usable-feeWidth-9),labelSize,(t,s)=>F.choice(t,s,700)),bottles:wrap(v.choice.bottles,usable-7,fs,F.choice)}));
+      const headerH=Math.max(feeH,...cells.map(c=>c.label.length*labelSize*1.1)),bodyH=Math.max(1,...cells.map(c=>c.bottles.length))*fs*1.1;
+      rows.push({cells,headerH,height:margin*2+2.5+headerH+2.7+bodyH+2});
     }
-    return {choices,cols,gap,cw,fs,labelSize,feeSize,unitSize,rows,height:rows.reduce((n,r)=>n+r.height,0)+gap*(rows.length-1)};
+    return {choices,cols,gap,cw,margin,fs,labelSize,feeSize,unitSize,unit,unitW,feeWidth,feeH,rows,height:rows.reduce((n,r)=>n+r.height,0)+gap*(rows.length-1)};
   }
   function drawChoices(x,y,width,layout){
     if(!layout.height)return;
     let cy=y,art='';
+    function feeBox(cell,fx,fy){
+      let g=rect(fx,fy,layout.feeWidth,layout.feeH,{fill:D.accent,rx:1,'data-choice-fee-box':cell.choice.id});
+      const center=fx+(layout.feeWidth-layout.unitW)/2,baseline=fy+(layout.feeH-cell.feeLines.length*layout.feeSize*1.1)/2+layout.feeSize;
+      g+=lines(cell.feeLines,center,baseline,layout.feeSize,{fill:D.paper,'font-weight':700,'text-anchor':'middle','data-font-role':'choice-fee','data-choice':cell.choice.id});
+      if(layout.unit)g+=text(layout.unit,center+F.price(cell.feeLines.at(-1),layout.feeSize,700)/2+.8,baseline+(cell.feeLines.length-1)*layout.feeSize*1.1,layout.unitSize,{fill:D.paper,'data-font-role':'price-unit'});
+      return g;
+    }
     if(layout.compact){
       for(const row of layout.rows){
         art+=rect(x,cy,width,row.height,{fill:D.card})+boxBorderSvg(D,x,cy,width,row.height,D.boxStyle==='none'?'none':'simple');
-        art+=lines(row.label,x+2,cy+(row.height-row.label.length*layout.labelSize*1.1)/2+layout.labelSize,layout.labelSize,{fill:D.accent,'font-weight':700,'data-font-role':'choice-label','data-choice':row.choice.id});
-        const feeY=cy+(row.height-5.5)/2,feeX=x+row.nameWidth+5;
-        art+=rect(feeX,feeY,row.feeWidth,5.5,{fill:D.accent,rx:1});
-        art+=text(row.fee,feeX+2,feeY+4,layout.feeSize,{fill:D.paper,'font-weight':700,'data-font-role':'choice-fee','data-choice':row.choice.id})+text(row.unit,feeX+2+F.price(row.fee,layout.feeSize,700)+.8,feeY+3.8,layout.unitSize,{fill:D.paper,'data-font-role':'price-unit'});
-        const bx=x+row.labelWidth+5;art+=lines(row.bottles,bx,cy+(row.height-row.bottles.length*layout.fs*1.1)/2+layout.fs,layout.fs,{fill:D.ink,'data-font-role':'choice-bottles'});
-        cy+=row.height+layout.gap;
+        const headerH=layout.stacked?row.headerH:row.height-2-layout.margin*2,headerY=cy+1+layout.margin;
+        art+=lines(row.label,x+layout.margin+2,headerY+(headerH-row.label.length*layout.labelSize*1.1)/2+layout.labelSize,layout.labelSize,{fill:D.accent,'font-weight':700,'data-font-role':'choice-label','data-choice':row.choice.id});
+        const feeX=layout.stacked?x+width-layout.margin-layout.feeWidth-2:x+layout.margin+layout.nameWidth+5;
+        art+=feeBox(row,feeX,headerY+(headerH-layout.feeH)/2);
+        const bx=layout.stacked?x+layout.margin+2:x+layout.margin+layout.labelWidth+5,by=layout.stacked?cy+layout.margin+row.headerH+2.8:cy+(row.height-row.bottles.length*layout.fs*1.1)/2;
+        art+=lines(row.bottles,bx,by+layout.fs,layout.fs,{fill:D.ink,'data-font-role':'choice-bottles'});cy+=row.height+layout.gap;
       }
       body+=block('bottle-choices','choices','추가 금액별 선택 보틀',x,y,width,layout.height,art);return;
     }
     for(const row of layout.rows){
       row.cells.forEach((cell,j)=>{
-        const cx=x+j*(layout.cw+layout.gap),feeX=cx+layout.cw-3.5-cell.feeWidth,feeY=cy+2.5+(row.headerH-5.8)/2,dividerY=cy+2.5+row.headerH+1.4;
+        const cx=x+j*(layout.cw+layout.gap),feeX=cx+layout.cw-layout.margin-3.5-layout.feeWidth,feeY=cy+layout.margin+2.5+(row.headerH-layout.feeH)/2,dividerY=cy+layout.margin+2.5+row.headerH+1.4;
         art+=rect(cx,cy,layout.cw,row.height,{fill:D.card})+boxBorderSvg(D,cx,cy,layout.cw,row.height);
-        art+=rect(cx+3.2,cy+2.5+(row.headerH-3.2)/2,.65,3.2,{fill:D.accent,rx:.2});
-        art+=lines(cell.label,cx+5.5,cy+2.5+(row.headerH-cell.label.length*layout.labelSize*1.1)/2+layout.labelSize,layout.labelSize,{fill:D.accent,'font-weight':700,'data-font-role':'choice-label','data-choice':cell.choice.id});
-        art+=rect(feeX,feeY,cell.feeWidth,5.8,{fill:D.accent,rx:1.3});
-        const numberW=F.price(cell.fee,layout.feeSize,700),unitW=F.price(cell.unit,layout.unitSize),feeTextX=feeX+(cell.feeWidth-numberW-unitW-.8)/2;
-        art+=text(cell.fee,feeTextX,feeY+4.25,layout.feeSize,{fill:D.paper,'font-weight':700,'data-font-role':'choice-fee','data-choice':cell.choice.id});
-        art+=text(cell.unit,feeTextX+numberW+.8,feeY+4.05,layout.unitSize,{fill:D.paper,'data-font-role':'price-unit'});
-        art+=line(cx+3.5,dividerY,cx+layout.cw-3.5,dividerY,{stroke:D.accent,'stroke-width':.2,opacity:.55});
-        art+=lines(cell.bottles,cx+3.5,dividerY+1.2+layout.fs,layout.fs,{fill:D.ink,'data-font-role':'choice-bottles'});
+        art+=rect(cx+layout.margin+3.2,cy+layout.margin+2.5+(row.headerH-3.2)/2,.65,3.2,{fill:D.accent,rx:.2});
+        art+=lines(cell.label,cx+layout.margin+5.5,cy+layout.margin+2.5+(row.headerH-cell.label.length*layout.labelSize*1.1)/2+layout.labelSize,layout.labelSize,{fill:D.accent,'font-weight':700,'data-font-role':'choice-label','data-choice':cell.choice.id});
+        art+=feeBox(cell,feeX,feeY);
+        art+=line(cx+layout.margin+3.5,dividerY,cx+layout.cw-layout.margin-3.5,dividerY,{stroke:D.accent,'stroke-width':.2,opacity:.55});
+        art+=lines(cell.bottles,cx+layout.margin+3.5,dividerY+1.2+layout.fs,layout.fs,{fill:D.ink,'data-font-role':'choice-bottles'});
       });cy+=row.height+layout.gap;
     }
     body+=block('bottle-choices','choices','추가 금액별 선택 보틀',x,y,width,layout.height,art);
@@ -1244,7 +1257,9 @@ function renderPage(doc,page,{selected=null,measure=approxMeasure,moveMode=false
     }
   }
   function drawColumnSets(x,y,width,height){
-    const gap=6,leftW=(width-gap*2)/3,rightX=x+leftW+gap*2,rightW=width-leftW-gap*2,cw=(rightW-gap)/2;
+    const gap=6,baseW=(width-gap*2)/3;
+    const tierWidth=Math.max(0,...page.cards.filter(c=>c.visible!==false&&c.kind==='bottle').flatMap(c=>c.tiers.map(t=>2*(c.boxPadding??D.setBoxPadding)+4*(F.price(formatPrice(setPrice(c,t),D.priceMode,true),c.priceFontPt?c.priceFontPt*PT_MM:(c.fontPt?c.fontPt*PT_MM:D.fontSize)*1.2,D.priceWeight)+2.1))));
+    const leftW=doc.orientation==='landscape'?Math.min(width*.4,Math.max(baseW,tierWidth)):baseW,rightX=x+leftW+gap*2,rightW=width-leftW-gap*2,cw=(rightW-gap)/2;
     const bottles=page.cards.filter(c=>c.visible!==false&&c.kind==='bottle'),champagnes=page.cards.filter(c=>c.visible!==false&&c.kind==='champagne');
     const bottleHeading=headingMetrics('bottle-heading',page.bottleHeading,leftW),champagneHeading=headingMetrics('champagne-heading',page.champagneHeading,rightW);
     if(page.setDivider)body+=line(x+leftW+gap,y,x+leftW+gap,y+height,{stroke:D.frame,'stroke-width':page.columnDividerWeight,opacity:page.columnDividerOpacity,'data-set-divider':'bottle-champagne','pointer-events':'none'});
@@ -1511,7 +1526,7 @@ try {
   const source=parsed?.document||parsed;
   model=source?validateDocument(source):seedDocument();
   if(source?.version===1&&source.pages.length!==model.pages.length)startupMessage='편집 내용을 유지하고 보틀·세트를 한 장으로 합쳤습니다.';
-  else if(source&&source.version<VERSION)startupMessage='새 SET MENU 페이지를 추가했습니다. 보틀 왼쪽·샴페인 2열 배치와 우하단 로고/그림 예비칸을 사용할 수 있습니다.';
+  else if(source&&source.version<VERSION)startupMessage=source.version<12?'새 SET MENU 페이지를 추가했습니다.':'샴페인 가격 일괄 크기·가격 박스·영문 크기 분리·추가금 정렬·내부 여백 설정을 추가했습니다.';
 } catch {
   try {model=boot?validateDocument(boot):seedDocument();} catch {model=seedDocument();}
   startupMessage='저장된 내용을 읽지 못했습니다. 백업 JSON 파일을 불러올 수 있습니다.';
@@ -1685,7 +1700,7 @@ function renderMenuContent(page) {
       h+='<div class="two-col">'+field('카테고리 크기 (pt)','section-fontPt',s.fontPt||points(model.design.categorySize),{id:s.id,type:'number',min:6,max:72,step:.5})+selectField('카테고리 굵기','section-fontWeight',s.fontWeight||0,[[0,'공통 굵기 사용'],...WEIGHT_OPTIONS],{id:s.id})+'</div>'+actionButton('공통 카테고리 설정 사용','section-font-default',s.id,'','text-button');
       h+=checkField('공통 카테고리 크기 사용','section-useDefaultSize',!s.fontPt,{id:s.id})+'<p class="help">'+(s.fontPt?'개별 '+s.fontPt+'pt가 지정되어 있습니다. 공통 크기를 따르려면 위 체크를 켜세요.':'디자인의 기본 카테고리 크기를 따릅니다.')+'</p>';
       h+=checkField('이 카테고리 내부 박스 표시','section-boxVisible',s.boxVisible??page.type==='mixed',{id:s.id});
-      if(s.boxVisible??page.type==='mixed')h+=selectField('이 카테고리 박스 테두리','section-boxStyle',s.boxStyle||'inherit',[['inherit','공통 내부 테두리 사용'],...Object.entries(BOX_LABELS)],{id:s.id});
+      if(s.boxVisible??page.type==='mixed')h+=selectField('이 카테고리 박스 테두리','section-boxStyle',s.boxStyle||'inherit',[['inherit','공통 내부 테두리 사용'],...Object.entries(BOX_LABELS)],{id:s.id})+checkField('공통 카테고리 여백 사용','section-padding-common',s.boxPadding===null,{id:s.id})+field('이 카테고리 내부 여백 (mm)','section-boxPadding',s.boxPadding??model.design.categoryBoxPadding,{id:s.id,type:'number',min:0,max:15,step:.2});
       h+='<div class="two-col">'+selectField('배치할 단','section-column',Math.min(s.column,page.columns-1),Array.from({length:page.columns},(_,i)=>[i,(i+1)+'단']),{id:s.id,attrs:{disabled:page.menuBalance}})+checkField('카테고리 표시','section-visible',s.visible,{id:s.id})+'</div>';
       h+='<div class="section-controls"><span class="badge-muted">'+s.items.length+'개 메뉴</span><div class="control-cluster">'+actionButton('↑','section-up',s.id,' title="카테고리 위로" aria-label="카테고리 위로"')+actionButton('↓','section-down',s.id,' title="카테고리 아래로" aria-label="카테고리 아래로"')+actionButton('삭제','delete-section',s.id,'','mini-button danger')+'</div></div>';
       for(const r of s.items) {
@@ -1715,6 +1730,12 @@ function renderSetContent(page,kind='bottle') {
   const cards=page.cards.filter(c=>c.kind===kind);
   let h='<div class="panel-heading"><h2>'+(kind==='champagne'?'샴페인 세트':'보틀 세트 구성')+'</h2><span class="unit-label">금액 입력: 만원</span></div><p class="help">세트마다 보틀·수량·가격 등급을 바꿀 수 있습니다. 자동 계산은 기본 가격에 등급별 추가 금액을 더합니다.</p>';
   const photoKey=kind==='champagne'?'champagnePhotosVisible':'bottlePhotosVisible';
+  if(kind==='champagne'){
+    const first=cards[0],defaultPrice=first?.priceFontPt||Number(((first?.fontPt||points(model.design.fontSize))*1.2).toFixed(1));
+    h+='<div class="block"><h3 class="block-title">샴페인 가격 일괄 설정</h3>'+checkField('모든 샴페인 가격에 같은 크기 사용','champagne-price-common',page.champagnePriceFontPt>0)+field('샴페인 가격 크기 (pt)','page-champagnePriceFontPt',page.champagnePriceFontPt||defaultPrice,{type:'number',min:6,max:72,step:.5})+'<p class="help">크기를 입력하면 이 페이지의 모든 샴페인 가격에 적용합니다. 같은 크기 사용을 끄면 보관된 개별 가격 크기를 다시 사용합니다.</p>';
+    if(page.type==='sets'&&page.setLayout==='columns')h+=checkField('샴페인 가격 박스 표시','page-champagnePriceBoxes',page.champagnePriceBoxes)+'<p class="help">끄면 가격은 같은 위치에 두고 가격을 감싼 선만 없앱니다.</p>';
+    h+='</div>';
+  }
   h+=checkField((kind==='champagne'?'샴페인':'보틀')+' 세트 사진칸 표시','page-'+photoKey,page[photoKey])+'<p class="help">끄면 사진칸이 없어지고 글씨가 그 공간을 채웁니다. 넣어둔 사진은 다시 켜면 돌아옵니다.</p>';
   if(!cards.length)h+='<div class="empty">세트를 추가해 메뉴판을 채워보세요.</div>';
   for(const c of cards) {
@@ -1724,10 +1745,11 @@ function renderSetContent(page,kind='bottle') {
       h+='<div class="section-edit">'+field('세트 이름','card-name',c.name,{id:c.id,attrs:{maxlength:150}});
       if(model.design.showEnglish)h+=field('영문 세트 이름 (선택)','card-english',c.english,{id:c.id,attrs:{maxlength:150}});
       h+=selectField('세트 분류','card-kind',c.kind,[['bottle','보틀 세트'],['champagne','샴페인 세트']],{id:c.id});
-      h+='<div class="two-col">'+field('세트명 (pt)','card-fontPt',c.fontPt||points(model.design.fontSize),{id:c.id,type:'number',min:6,max:72,step:.5})+field('세트 가격 (pt)','card-priceFontPt',c.priceFontPt||Number(((c.fontPt||points(model.design.fontSize))*1.2).toFixed(1)),{id:c.id,type:'number',min:6,max:72,step:.5})+'</div>';
-      h+='<div class="two-col">'+field('세트 영문 (pt)','card-englishFontPt',c.englishFontPt||points(model.design.englishSize),{id:c.id,type:'number',min:6,max:72,step:.5})+field('구성·설명 (pt)','card-detailFontPt',c.detailFontPt||points(model.design.detailSize),{id:c.id,type:'number',min:6,max:72,step:.5})+'</div>'+actionButton('공통 글자 크기 사용','card-font-default',c.id,'','text-button');
+      h+='<div class="two-col">'+field('세트명 (pt)','card-fontPt',c.fontPt||points(model.design.fontSize),{id:c.id,type:'number',min:6,max:72,step:.5})+field('세트 가격 (pt)','card-priceFontPt',c.kind==='champagne'&&page.champagnePriceFontPt? page.champagnePriceFontPt:c.priceFontPt||Number(((c.fontPt||points(model.design.fontSize))*1.2).toFixed(1)),{id:c.id,type:'number',min:6,max:72,step:.5,attrs:{disabled:c.kind==='champagne'&&page.champagnePriceFontPt>0}})+'</div>';
+      h+='<div class="two-col">'+field('세트명 영문 (pt)','card-englishFontPt',c.englishFontPt||points(model.design.setEnglishSize),{id:c.id,type:'number',min:6,max:72,step:.5})+field('구성 영문 (pt)','card-componentEnglishFontPt',c.componentEnglishFontPt||points(model.design.componentEnglishSize),{id:c.id,type:'number',min:6,max:72,step:.5})+'</div>'+field('구성 한글·설명 (pt)','card-detailFontPt',c.detailFontPt||points(model.design.detailSize),{id:c.id,type:'number',min:6,max:72,step:.5})+actionButton('공통 글자 크기 사용','card-font-default',c.id,'','text-button');
       h+=selectField('이 세트의 구성 글씨 굵기','card-componentWeight',c.componentWeight||0,[[0,'공통 구성 굵기 사용'],...WEIGHT_OPTIONS],{id:c.id});
       h+=selectField('이 박스의 테두리','card-boxStyle',c.boxStyle,[['inherit','공통 내부 테두리 사용'],...Object.entries(BOX_LABELS)],{id:c.id});
+      h+=checkField('공통 세트 여백 사용','card-padding-common',c.boxPadding===null,{id:c.id})+field('이 세트 내부 여백 (mm)','card-boxPadding',c.boxPadding??model.design.setBoxPadding,{id:c.id,type:'number',min:0,max:15,step:.2})+'<p class="help">테두리와 글씨·사진 사이의 여백입니다. 직접 입력하면 이 박스에만 적용합니다.</p>';
       h+='<p class="card-edit-title">세트 사진</p><p class="help">'+(page[photoKey]?(c.kind==='champagne'||page.setLayout==='columns'?'사진이 박스 오른쪽에 들어갑니다. 왼쪽은 세트 내용입니다.':'사진이 구성 설명과 가격 사이에 들어갑니다.'):'현재 사진칸이 꺼져 있습니다. 위의 사진칸 표시를 켜면 사진을 넣을 수 있습니다.')+' 세트를 옮기면 사진도 함께 이동합니다.</p>';
       if(c.image)h+='<div class="asset-preview"><img src="'+esc(c.image.dataUrl)+'" alt="'+esc(c.image.name)+'"><span>'+esc(c.image.name)+'</span></div>'+selectField('사진 맞춤','card-image-fit',c.image.fit,[['contain','전체 사진 보이기'],['cover','영역을 채우기 · 가장자리 잘림']],{id:c.id})+field('사진 불투명도 (%)','card-image-opacity',Math.round(c.image.opacity*100),{id:c.id,type:'number',min:10,max:100,step:1});
       if(page[photoKey])h+='<div class="two-col">'+actionButton(c.image?'사진 교체':'＋ 사진 넣기','upload-card-image',c.id,'','button')+(c.image?actionButton('사진 제거','remove-card-image',c.id,'','button'):'')+'</div>';
@@ -1765,6 +1787,8 @@ function renderSetContent(page,kind='bottle') {
 function renderChoicesPanel(page){
   let h='<div class="block"><h3 class="block-title">추가 금액별 선택 보틀</h3><p class="help">보틀 세트 아래에 표시합니다. 추가 금액이나 등급명을 바꾸면 같은 등급의 자동 계산 세트 가격도 함께 바뀝니다. 티레드는 선택 보틀에서 제외됩니다.</p>';
   h+=checkField('선택 보틀 안내 표시','page-choicesVisible',page.choicesVisible)+field('선택 보틀 글자 (pt)','page-choiceFontPt',page.choiceFontPt,{type:'number',min:6,max:72,step:.5});
+  h+='<div class="two-col">'+field('등급명 · STANDARD (pt)','page-choiceLabelFontPt',page.choiceLabelFontPt,{type:'number',min:6,max:72,step:.5})+field('추가금 · +0 / +2 (pt)','page-choiceFeeFontPt',page.choiceFeeFontPt||(page.type==='sets'&&page.setLayout==='columns'?10:11),{type:'number',min:6,max:72,step:.5})+'</div><p class="help">등급명과 추가금 크기를 따로 조절합니다. 금액 박스는 같은 위치·폭으로 정렬하고 만원 글자는 생략합니다. 가격 단위는 메뉴판 하단에서 확인할 수 있습니다.</p>';
+  h+=field('선택 안내 추가 여백 (mm)','page-choiceBoxPadding',page.choiceBoxPadding,{type:'number',min:0,max:15,step:.2})+'<p class="help">기본 여백에 이 값을 더합니다. 등급명·금액·주류 목록이 테두리 안쪽으로 이동합니다.</p>';
   for(const c of page.choices){
     h+='<div class="tier"><div class="two-col">'+field('선택 등급','choice-label',c.label,{id:c.id,attrs:{maxlength:70}})+field('추가 금액 (만원)','choice-extra',inputAmount(c.extra),{id:c.id,type:'number',min:0,max:100000,step:.1})+'</div>'+textareaField('고를 수 있는 보틀','choice-bottles',c.bottles,{id:c.id,rows:2});
     h+='<div class="tier-bottom">'+checkField('안내에 포함','choice-visible',c.visible,{id:c.id})+'<div class="control-cluster">'+actionButton('↑','choice-up',c.id)+actionButton('↓','choice-down',c.id)+actionButton('삭제','delete-choice',c.id)+'</div></div></div>';
@@ -1833,6 +1857,7 @@ function renderDesignPanel() {
   h+='</div><div class="block"><h3 class="block-title">내부 박스 테두리</h3><div class="frame-grid">';
   for(const [key,name] of Object.entries(BOX_LABELS))h+='<button class="frame-choice'+(key===D.boxStyle?' active':'')+'" data-action="box-style" data-style="'+key+'" aria-pressed="'+(key===D.boxStyle)+'"><svg viewBox="0 0 100 62" aria-hidden="true"><rect width="100" height="62" fill="'+D.card+'"/>'+boxBorderSvg(D,5,5,90,52,key)+'</svg>'+esc(name)+'</button>';
   h+='</div>'+rangeField('내부 선 두께','boxWeight',.15,1.5,.01)+'<p class="help">2.svg 문양의 비율을 유지하고 직선 길이만 조절합니다. 기본 템플릿과 같은 선 두께 설정이 적용됩니다. 세트 편집에서 박스별로 다른 테두리를 고를 수 있습니다.</p>';
+  h+=rangeField('공통 세트 내부 여백','setBoxPadding',0,15,.2)+rangeField('공통 카테고리 내부 여백','categoryBoxPadding',0,15,.2)+'<p class="help">mm 단위입니다. 각 세트·카테고리에서도 별도 여백을 지정하거나 공통 여백을 사용하도록 바꿀 수 있습니다. 여백을 늘리면 내용 폭과 줄바꿈을 다시 계산합니다.</p>';
   h+='</div><div class="block"><h3 class="block-title">서체와 간격</h3>';
   const fonts=Object.entries(FONT_OPTIONS).map(([key,font])=>[key,font.label]);
   h+='<div class="two-col">'+selectField('기본 한글 글꼴','design:font',D.font,fonts)+selectField('기본 영문·숫자 글꼴','design:englishFont',D.englishFont,fonts)+'</div>';
@@ -1845,7 +1870,7 @@ function renderDesignPanel() {
   h+='<div class="two-col">'+selectField('메뉴명 굵기','design:fontWeight',D.fontWeight,WEIGHT_OPTIONS)+selectField('가격 굵기','design:priceWeight',D.priceWeight,WEIGHT_OPTIONS)+'</div>';
   h+='<div class="two-col">'+selectField('카테고리 굵기','design:categoryWeight',D.categoryWeight,WEIGHT_OPTIONS)+selectField('세트명 굵기','design:setWeight',D.setWeight,WEIGHT_OPTIONS)+'</div>';
   h+=selectField('세트 구성 글씨 굵기','design:componentWeight',D.componentWeight,WEIGHT_OPTIONS);
-  h+=pointField('기본 카테고리 크기 (pt)','categorySize')+pointField('기본 메뉴명·가격 (pt)','fontSize')+pointField('기본 영문 이름 (pt)','englishSize')+pointField('기본 구성·설명 (pt)','detailSize')+'<p class="help">카테고리와 메뉴명은 기본 15pt입니다. 각 카테고리·메뉴·세트에서 크기를 따로 바꿀 수 있습니다. 영문과 구성 설명은 기본 10pt입니다.</p>';
+  h+=pointField('기본 카테고리 크기 (pt)','categorySize')+pointField('기본 메뉴명·가격 (pt)','fontSize')+pointField('기본 단품 영문 이름 (pt)','englishSize')+pointField('기본 세트명 영문 (pt)','setEnglishSize')+pointField('기본 세트 구성 영문 (pt)','componentEnglishSize')+pointField('기본 구성 한글·설명 (pt)','detailSize')+'<p class="help">카테고리와 메뉴명은 기본 15pt입니다. 세트명 영문과 구성 영문은 별도 크기를 사용하며 기본 10pt입니다. 개별 메뉴·세트에서도 조절할 수 있습니다.</p>';
   h+=actionButton('모든 카테고리에 공통 크기 적용','all-categories-default-size',null,'','button full')+'<p class="help">카테고리의 개별 크기 지정만 해제합니다. 카테고리별 편집에서도 공통 크기 사용을 켜고 끌 수 있습니다.</p>';
   h+=rangeField('페이지 제목 크기','titleSize',7,18,.5)+rangeField('메뉴 행 간격','rowGap',.3,5,.1)+rangeField('내용 여백','margin',12,35,1);
   h+=checkField('영문 이름 표시','design:showEnglish',D.showEnglish)+checkField('이름과 가격 사이 점선','design:leaders',D.leaders)+checkField('내용이 많으면 자동 축소','design:autoFit',D.autoFit)+checkField('하단 페이지 번호','design:showNumbers',D.showNumbers)+checkField('사진 없는 칸의 보틀 그림','design:showBottle',D.showBottle);
@@ -2116,13 +2141,16 @@ function applyInput(input,eventType) {
     if(input.max!=='')value=Math.min(Number(input.max),value);
   }
   const target=locate(bind,input.dataset.id,input.dataset.parent);
-  const refresh=bind.startsWith('font-role:')||eventType==='change'&&['section-fontPt','design-pt:categorySize'].includes(bind)||['orientation','page-columns','page-setLayout','page-reserveImageVisible','page-menuBalance','page-columnDividers','divider-position','page-shotPriceBelow','page-longPriceBelow','page-allPricesBelow','section-boxVisible','section-useDefaultSize','card-pricing','card-kind','page-bottlePhotosVisible','page-champagnePhotosVisible','item-showSixPrice','design:showEnglish','design:font','design:englishFont','design:fontWeight'].includes(bind);
+  const refresh=bind.startsWith('font-role:')||eventType==='change'&&['section-fontPt','section-boxPadding','card-boxPadding','page-champagnePriceFontPt','design-pt:categorySize'].includes(bind)||['card-padding-common','section-padding-common','champagne-price-common','page-champagnePriceBoxes','orientation','page-columns','page-setLayout','page-reserveImageVisible','page-menuBalance','page-columnDividers','divider-position','page-shotPriceBelow','page-longPriceBelow','page-allPricesBelow','section-boxVisible','section-useDefaultSize','card-pricing','card-kind','page-bottlePhotosVisible','page-champagnePhotosVisible','item-showSixPrice','design:showEnglish','design:font','design:englishFont','design:fontWeight'].includes(bind);
   mutate(()=>{
     const p=currentPage();
     if(bind==='divider-position'){
       const positions=new Set(p.columnDividerPositions??Array.from({length:p.columns-1},(_,i)=>i+1)),ci=Number(input.dataset.id);
       if(Number.isInteger(ci)&&ci>0&&ci<p.columns){if(value)positions.add(ci);else positions.delete(ci);p.columnDividerPositions=[...positions].sort((a,b)=>a-b);}
     }
+    else if(bind==='champagne-price-common'){const c=p.cards.find(c=>c.kind==='champagne');p.champagnePriceFontPt=value?Math.min(72,c?.priceFontPt||Number(((c?.fontPt||points(model.design.fontSize))*1.2).toFixed(1))):0;}
+    else if(bind==='card-padding-common'&&target)target.boxPadding=value?null:model.design.setBoxPadding;
+    else if(bind==='section-padding-common'&&target)target.boxPadding=value?null:model.design.categoryBoxPadding;
     else if(bind==='section-useDefaultSize'&&target)target.fontPt=value?0:points(model.design.categorySize);
     else if(bind==='brand')model.brand=value;
     else if(bind==='orientation')model.orientation=value;
@@ -2337,7 +2365,7 @@ function handleAction(el) {
   if(action==='item-font-default'&&ps){mutate(()=>{const r=ps.items.find(v=>v.id===id);if(r){r.fontPt=0;r.englishFontPt=0;}});return;}
   if(action==='section-font-default'){const section=p.sections.find(v=>v.id===id);if(section)mutate(()=>{section.fontPt=0;section.fontWeight=0;});return;}
   if(action==='heading-font-default'){mutate(()=>{p.bottleHeadingFontPt=0;p.champagneHeadingFontPt=0;});return;}
-  if(action==='card-font-default'&&c){mutate(()=>{c.fontPt=0;c.priceFontPt=0;c.englishFontPt=0;c.detailFontPt=0;});return;}
+  if(action==='card-font-default'&&c){mutate(()=>{c.fontPt=0;c.priceFontPt=0;c.englishFontPt=0;c.componentEnglishFontPt=0;c.detailFontPt=0;});return;}
   if(action==='sync-choices'){
     mutate(()=>{for(const c of p.cards.filter(c=>c.kind==='bottle')){
       const previous=c.tiers;c.tiers=p.choices.filter(v=>v.visible).map(v=>{const t=previous.find(t=>t.label===v.label||t.extra===v.extra);return {id:t?.id||uid('tier'),label:v.label,extra:v.extra,price:t?.price??c.basePrice+v.extra,bottles:t?.bottles||''};});
@@ -2555,7 +2583,7 @@ async function initialize() {
     try{
       model=validateDocument(saved.document);localTimestamp=saved.time;localCloud=saved.cloud||null;hasLocalDraft=true;ui.page=model.pages.find(p=>p.type==='mixed')?.id||model.pages[0].id;ui.section=null;ui.selected=null;
       if(saved.document.version===1&&saved.document.pages.length!==model.pages.length)startupMessage='편집 내용을 유지하고 보틀·세트를 한 장으로 합쳤습니다.';
-      else if(saved.document.version<VERSION)startupMessage='새 SET MENU 페이지를 추가했습니다. 보틀 왼쪽·샴페인 2열 배치와 우하단 로고/그림 예비칸을 사용할 수 있습니다.';
+      else if(saved.document.version<VERSION)startupMessage=saved.document.version<12?'새 SET MENU 페이지를 추가했습니다.':'샴페인 가격 일괄 크기·가격 박스·영문 크기 분리·추가금 정렬·내부 여백 설정을 추가했습니다.';
     }catch{startupMessage='자동 저장 내용을 읽지 못했습니다. JSON 백업을 불러올 수 있습니다.';}
   }
   if(cloud.enabled)await cloud.open({document:model,metadata:localCloud,hasLocal:hasLocalDraft});
