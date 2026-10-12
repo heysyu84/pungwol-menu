@@ -1,0 +1,149 @@
+{
+  "mode": "built-in image_gen",
+  "created": "2026-10-12",
+  "assets": {
+    "sparkling": "sparkling-v1.png",
+    "richebel-luminous": "richebel-luminous-v1.png",
+    "richebel-tred": "richebel-tred-v1.png",
+    "blanc-foussy": "blanc-foussy-v1.png",
+    "moet-pair": "moet-pair-v1.png",
+    "champagne-selection": "champagne-selection-v1.png",
+    "richebel-five": "richebel-five-v1.png",
+    "vip": "vip-v1.png"
+  },
+  "requests": [
+    {
+      "key": "sparkling",
+      "prompt": "Use case: product-mockup. Asset type: print-quality default set illustration for an A3 Korean club menu. Generate ONE finished isolated composition on genuine transparent background, ideally 2048 pixels. Exact inventory TWO bottles only: one warm amber generic selected spirit bottle with a blank cream label and no brand, and ONE 365 Brut sparkling wine bottle faithfully based on reference image 1 (black foil, dark green glass, black square gold '365' label). Friendly approachable soft hand-painted product illustration, refined warm highlights and natural glass texture, no cartoon faces. Slightly staggered natural arrangement, all necks and bases fully visible, labels readable, every bottle countable. Bottles fill 90 percent of height, tight centered framing with small transparent margin. No glasses, fruit, ice buckets, gifts, decoration, title, prices, captions or watermarks. Preserve real 365 packaging. No extra or partly hidden bottles.",
+      "references": [
+        "image(3).png"
+      ]
+    },
+    {
+      "key": "richebel-luminous",
+      "prompt": "Use case: product-mockup. Asset type: high-resolution transparent print illustration for an A3 Korean club bottle set. ONE finished composition, ideally 2048 pixels. Exact inventory FOUR bottles only: ONE generic amber selected spirit bottle with a blank cream label (no invented brand), ONE 365 Brut as reference image 1, ONE Richebel Rosé as reference images 2 and 3, ONE Richebel Brut as reference images 4 and 5. Richebel references are sideways split photographs: image 2 is pink-foil neck of the same bottle whose lower silver patterned body and pink diamond RICHEBEL label are in image 3; image 4 is gold-foil neck of the same bottle whose silver patterned lower body and black diamond RICHEBEL label are in image 5. Reconstruct each complete upright real bottle, neck and body joined naturally, faithful geometry and labels. Friendly soft hand-painted product illustration, welcoming and polished, warm natural highlights, delicate soft contact shadows only. Arrange four upright bottles in a compact staggered group, slight depth, each cap and base visible and each countable. Transparent background, no opaque stage, no glasses, extra props, titles, prices, captions or watermark. Every bottle complete, no extra bottles.",
+      "references": [
+        "image(3).png",
+        "image(5).png",
+        "download.png",
+        "image(6).png",
+        "image(7).png"
+      ]
+    },
+    {
+      "key": "richebel-tred",
+      "prompt": "Use case: product-mockup. Asset type: high-resolution default illustration for a printed A3 club bottle set. ONE isolated composition on real transparent background, ideally 2048 pixels. Exact inventory FIVE bottles: ONE generic amber selected spirit bottle with blank cream label and no invented brand; ONE 365 Brut using reference image 2; ONE Richebel Rosé using reference images 3 neck and 4 lower body; ONE Richebel Brut using reference images 5 neck and 6 lower body; ONE vivid red T-RED bottle using reference image 1, white long neck and large outlined T/RED TOVARITCH label. Richebel sources are sideways partial shots of the same complete bottle; reconstruct them upright with real silver geometric patterned body, rose pink foil and pink diamond label for Rosé, gold foil and black diamond label for Brut. Friendly inviting soft hand-painted product illustration with attractive but restrained warm highlights. Compact naturally staggered group, readable real labels, all five complete bottles visually countable, no hidden bottle bases. Fill frame with products. No glasses, ice bucket, fruit, sparkler, props, title, prices, captions or watermarks; no extra bottles. Genuine alpha transparency, no opaque background.",
+      "references": [
+        "image(2).png",
+        "image(3).png",
+        "image(5).png",
+        "download.png",
+        "image(6).png",
+        "image(7).png"
+      ]
+    },
+    {
+      "key": "richebel-five",
+      "prompt": "Use case: product-mockup. Asset type: luxury champagne set illustration for high-quality A3 menu printing. ONE finished composition on genuine transparent background, ideally 2048 pixels. Exact inventory FIVE complete Richebel sparkling wine bottles: THREE Brut bottles and TWO Rosé bottles. Reference images 1 and 2 are sideways neck and lower body of Rosé (rose foil neck, silver geometric patterned body and pink diamond RICHEBEL label); reference images 3 and 4 are sideways neck and lower body of Brut (gold foil neck, silver geometric patterned body and black diamond RICHEBEL label). Reconstruct full upright bottles faithfully. Luxurious highly detailed hand-painted product rendering, sophisticated satin silver reflections, precise gold and rose foil, dimensional real glass, soft warm rim lighting. Graceful compact fan arrangement with subtle depth: three rear bottles and two front, modest overlap, ALL FIVE caps, bottle shapes, labels and bases clearly countable. Bottles occupy almost all available frame height; no unnecessary empty margins. No gift boxes, glasses, ice buckets, pedestals, fruit, extra bottles, title, prices, captions or watermark. Isolated transparent background and subtle transparent contact shadows only.",
+      "references": [
+        "image(5).png",
+        "download.png",
+        "image(6).png",
+        "image(7).png"
+      ]
+    },
+    {
+      "key": "sparkling",
+      "prompt": "Use case: precise-object-edit. Edit the supplied finished transparent two-bottle illustration. Put ONE large dark warm brown question mark '?' centered on the blank cream label of the amber selected spirit bottle. The mark should look elegantly printed, bold, easy to recognize at small menu size. Change only that label addition. Preserve the two bottles, their shapes, exact 365 packaging, count, arrangement, lighting, all other pixels, resolution and genuine transparent background. No other text or extra objects.",
+      "references": [
+        "exec-7aeb4d20-2fc9-4d22-b8e1-904a2ac5ca0c.png"
+      ]
+    },
+    {
+      "key": "richebel-luminous",
+      "prompt": "Use case: precise-object-edit. Edit the supplied finished transparent FOUR-bottle set illustration. Add ONE large bold warm dark brown question mark '?' centered on the cream label of the amber generic selected spirit bottle at left. Change only this label addition. Preserve the exact FOUR complete bottles and arrangement: generic selected spirit, 365 Brut, one Richebel Rosé, one Richebel Brut; real packaging, high resolution and transparent background. No other text or extra objects.",
+      "references": [
+        "exec-0a2b3a30-a13e-428a-8525-621b8d83cc05.png"
+      ]
+    },
+    {
+      "key": "richebel-tred",
+      "prompt": "Use case: compositing. Asset type: high-resolution transparent illustration for A3 printed club bottle set. Supporting style/products reference image 1 contains FOUR bottles: generic amber selected spirit, 365 Brut, Richebel Rosé, Richebel Brut. Supporting product reference image 2 is a T-RED liqueur bottle. Create ONE finished natural compact group with EXACTLY FIVE complete upright bottles: the four exact products of image 1 plus ONE exact T-RED bottle of image 2 (red body, white long neck, large outlined T RED label). Put ONE large bold dark brown question mark '?' on the cream label of the amber selected spirit bottle. Preserve real packaging of all others. Friendly inviting refined hand-painted product rendering, warm soft highlights, slight natural stagger and modest overlap, every one of FIVE caps and bases visible/countable. Full bottles, tight framing, ideally 2048px. Genuine transparent background, no opaque stage, no extra bottles, glasses, fruit, props, captions, prices or watermark.",
+      "references": [
+        "exec-0a2b3a30-a13e-428a-8525-621b8d83cc05.png",
+        "image(2).png"
+      ]
+    },
+    {
+      "key": "blanc-foussy",
+      "prompt": "Use case: product-mockup. Asset type: luxurious high-resolution default illustration for A3 printed champagne set menu. Generate ONE finished isolated group of EXACTLY THREE Blanc Foussy Brut bottles, faithfully based on this product reference: green champagne glass, champagne-gold foil neck with BLANC FOUSSY, cream rectangular label with peacock and BLANC FOUSSY TOURAINE BRUT. Elegant detailed hand-painted photoreal product illustration, polished satin foil, luminous glass highlights, restrained warm luxury lighting. Natural staggered three-bottle arrangement with slight depth and modest overlap; every bottle's cap, label and base visible and all THREE countable. Bottles fill most frame with small margin. Genuine transparent background, ideally 2048px. No glasses, ice buckets, gifts, props, title, captions, prices, watermark or extra bottles. Do not copy the white background.",
+      "references": [
+        "blanc-foussy.png"
+      ]
+    },
+    {
+      "key": "moet-pair",
+      "prompt": "Use case: product-mockup. Asset type: luxurious high-resolution illustration for an A3 printed champagne set. Exact inventory TWO full bottles ONLY: ONE Moët & Chandon Brut Impérial using product reference image 1 (gold foil, cream label, dark green glass), ONE Moët & Chandon N.I.R Nectar Impérial Rosé using product reference image 2 (copper foil, dark rosé glass with fine copper angular light lines, copper N.I.R label). Create a refined detailed hand-painted photoreal product rendering with elegant warm rim lighting, precise glass and metallic foil, natural staggered pair, slight angle for depth, both labels/caps/bases visible. Faithfully retain the two real product identities. ONE isolated composition on genuine transparent background, ideally 2048px, tight full-bottle framing. No patterned checkerboard, opaque background, glasses, buckets, gift boxes, other props, title, prices, captions, watermark or extra bottles.",
+      "references": [
+        "moet-brut.png",
+        "moet-nir.png"
+      ]
+    },
+    {
+      "key": "champagne-selection",
+      "prompt": "Use case: product-mockup. Asset type: luxurious print-quality champagne set illustration for A3 menu. ONE composition with EXACTLY THREE complete bottles: ONE Veuve Clicquot Yellow Label Brut as reference 1 (gold neck, yellow label); ONE Moët & Chandon Brut Impérial as reference 2 (gold neck, cream label); ONE Richebel Brut reconstructed upright from sideways split references 3 (gold foil neck) and 4 (silver geometric patterned lower body and black diamond RICHEBEL ICE label). Faithful packaging, refined detailed hand-painted photoreal rendering, luxury warm highlights and satin foil. Naturally staggered compact trio, each bottle cap, label and base visible/countable. All three complete, no misleading extra bottles. Genuine transparent background, ideally 2048px, tight framing. No glasses, buckets, gifts, pedestal, fruit, extra props, title, captions, prices or watermark. Ignore source backgrounds and checkerboards.",
+      "references": [
+        "veuve.jpg",
+        "moet-brut.png",
+        "image(6).png",
+        "image(7).png"
+      ]
+    },
+    {
+      "key": "vip",
+      "prompt": "Use case: product-mockup. Asset type: luxury VIP champagne set illustration for high-resolution A3 print menu. ONE finished composition of EXACTLY THREE bottles: ONE Dom Pérignon Vintage champagne bottle matching product reference image 1 (distinct broad shouldered dark green glass, black foil neck and ornate gold shield label), TWO Moët & Chandon Brut Impérial bottles matching product reference image 2 (gold foil neck, cream rectangular label). Dom centered slightly behind, two Moët bottles naturally staggered at its sides, modest overlap with ALL THREE full bottle caps, labels and bases visible and countable. Elegant extremely refined detailed hand-painted photoreal product illustration, dimensional glass, satin gold foil, subtle warm luxurious rim lighting. Genuine transparent background, tight full-bottle framing, ideally 2048px. No opaque stage or checkerboard, no glasses, ice buckets, fruit, gift boxes, extra objects or bottles, title, prices, captions or watermark. Preserve real labels and bottle forms.",
+      "references": [
+        "dom.png",
+        "moet-brut.png"
+      ]
+    },
+    {
+      "key": "richebel-five",
+      "prompt": "Use case: precise-object-edit. Edit TARGET image 1, the transparent FIVE-Richebel set illustration. Restore the MISSING WHITE COLLAR BAND around the lower foil neck/upper shoulder on EVERY ONE of the FIVE bottles, using supporting references 2 (pink foil Rosé neck with white satin band and pink R diamond mark) and 3 (gold foil Brut neck with white satin band and gold R diamond mark). The white band wraps across the neck/shoulder just below the metallic foil and has a large R and diamond mark visible at front. Add pink R marks to BOTH pink-neck Rosé bottles, gold R marks to ALL THREE gold-neck Brut bottles. Preserve exactly FIVE bottles, their present arrangement, every bottle cap/base, the silver body patterns, black/pink lower diamond labels, full resolution and actual alpha transparency. Do not add bottles, crop, change count, change body labels, lighting or style. Genuine transparent background.",
+      "references": [
+        "exec-afa47ac8-dbd7-4aab-8bbf-6aac2ff688c8.png",
+        "image(5).png",
+        "image(6).png"
+      ]
+    },
+    {
+      "key": "blanc-foussy",
+      "prompt": "Use case: product-mockup. Asset type: print-quality luxury champagne set illustration for A3 menu. The supplied image is the EXACT required Blanc Foussy Brut bottle. Generate ONE finished illustration of EXACTLY THREE copies of THIS product, not any other Blanc Foussy packaging. Every bottle has a GOLD foil top and gold neck with vertical black BRUT letters, a DARK BLUE collar medallion with FB/BRUT, and a complete WHITE/SILVER bottle wrap COVERED IN DARK BLUE PEACOCK FEATHER patterns, plus a WHITE lower label reading BLANC FOUSSY Blanc de Blancs BRUT with gold peacocks. No plain green-glass bottles. Reconstruct three complete upright bottles faithfully matching the reference with all this distinctive blue-and-white pattern and neck collar. Luxurious refined detailed hand-painted product illustration, softly luminous metallic gold and satin blue-white wrap, natural compact staggered trio with subtle depth and modest overlap. ALL THREE caps, labels and bases clearly countable, full bottles occupy most frame, small margin, ideally 2048px. Entire background genuinely TRANSPARENT alpha, no colored backdrop or black/gold gradient, no glow behind products, no opaque pedestal or stage. Soft contact shadows only. No glasses, ice buckets, gifts, fruit, extra bottles or props, title, prices, captions, watermarks.",
+      "references": [
+        "blanc_foussy_brut.png"
+      ]
+    },
+    {
+      "key": "moet-pair",
+      "prompt": "Use case: background-extraction. Remove ALL backdrop and background from this exact finished TWO-bottle composition. Return ONLY the two entire bottles on genuine fully transparent alpha background, isolated clean product cutout with smooth detailed edges. Preserve both bottles entirely unchanged: one Moët Brut Impérial on left and one copper glowing Moët N.I.R on right, original labels, cap/base, glass shapes, lighting inside bottles, positions, count TWO and high resolution. Remove every black/brown/gold gradient and the light glow behind/outside the bottles. Background pixels must be alpha zero, including space between necks. No new background, scene, checkerboard, ground plane or extra objects. Do not alter or crop the bottles.",
+      "references": [
+        "exec-69e69cc7-2a11-41b2-a443-0e823b0b2073.png"
+      ]
+    },
+    {
+      "key": "champagne-selection",
+      "prompt": "Use case: precise-object-edit. Target image 1 is a finished THREE-bottle champagne illustration. First restore the missing WHITE COLLAR BAND at the bottom of the gold foil neck of the RIGHTMOST Richebel bottle, matching supporting product reference 2: a white satin wraparound band with large GOLD R and diamond mark facing front, separating gold neck from silver patterned body. Preserve the other bottle packaging exactly. Then remove ALL black/brown/gold backdrop and outside glow so the THREE full bottles are isolated with genuine alpha-zero transparent background, including gaps between necks, smooth clean product edges. Preserve exactly THREE bottles in their exact positions (Veuve Clicquot, Moët Brut, Richebel), their caps/bases, original lower labels, glass lighting and high resolution. No stage, pedestal, gradient, checkerboard, ground plane, extra bottles or objects. Do not crop or change the products apart from restoring the correct Richebel neck band.",
+      "references": [
+        "exec-6447f5ab-01a4-4398-91e9-eada7d7a4636.png",
+        "image(6).png"
+      ]
+    },
+    {
+      "key": "vip",
+      "prompt": "Use case: background-extraction. Remove ALL backdrop from this exact finished VIP THREE-bottle composition. Return ONLY the three complete bottles as isolated clean product cutouts on genuine alpha-zero transparent background with smooth detailed edges: ONE central Dom Pérignon, TWO Moët Brut bottles at sides. Preserve foreground entirely: exact bottles, labels, lighting inside glass, foil, arrangement, caps/bases, count THREE and high resolution. Remove all black/brown/gold gradient, background light glow outside bottles and ground plane, including background in gaps between necks. No new background, stage, checkerboard, pedestal or objects. Do not crop or change bottles.",
+      "references": [
+        "exec-d79154f0-db65-4efc-ab17-46f1e616fd77.png"
+      ]
+    }
+  ]
+}
